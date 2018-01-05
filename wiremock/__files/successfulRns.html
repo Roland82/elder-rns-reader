@@ -1,0 +1,1244 @@
+<html xmlns="http://www.w3.org/1999/xhtml" id="ng-app" ng-app="trustnetApp" hc="a0" hcx="0"><head><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info = {"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"03b26cbfa9","applicationID":"3307192,50482861","transactionName":"Y1QGMERQCkFXB0RZXFoeJTdmHg1cQAFDRF5RXxAXGUUKR11LUUJHXVIIARhQF0JO","queueTime":0,"applicationTime":199,"agent":"","atts":""}</script><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"UAYOV15XGwADVFZTDgM="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e,n){function r(t){try{c.console&&console.log(t)}catch(e){}}var o,i=t("ee"),a=t(20),c={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(c.console=!0,o.indexOf("dev")!==-1&&(c.dev=!0),o.indexOf("nr_dev")!==-1&&(c.nrDev=!0))}catch(s){}c.nrDev&&i.on("internal-error",function(t){r(t.stack)}),c.dev&&i.on("fn-err",function(t,e,n){r(n.stack)}),c.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(c,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,c){try{h?h-=1:o(c||new UncaughtException(t,e,n),!0)}catch(f){try{i("ierr",[f,s.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function o(t,e){var n=e?null:s.now();i("err",[t,n])}var i=t("handle"),a=t(21),c=t("ee"),s=t("loader"),f=t("gos"),u=window.onerror,d=!1,p="nr@seenError",h=0;s.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(l){"stack"in l&&(t(13),t(12),"addEventListener"in window&&t(6),s.xhrWrappable&&t(14),d=!0)}c.on("fn-start",function(t,e,n){d&&(h+=1)}),c.on("fn-err",function(t,e,n){d&&!n[p]&&(f(n,p,function(){return!0}),this.thrown=!0,o(n))}),c.on("fn-end",function(){d&&!this.thrown&&h>0&&(h-=1)}),c.on("internal-error",function(t){i("ierr",[t,s.now(),!0])})},{}],3:[function(t,e,n){t("loader").features.ins=!0},{}],4:[function(t,e,n){function r(){M++,S=y.hash,this[u]=b.now()}function o(){M--,y.hash!==S&&i(0,!0);var t=b.now();this[l]=~~this[l]+t-this[u],this[d]=t}function i(t,e){E.emit("newURL",[""+y,e])}function a(t,e){t.on(e,function(){this[e]=b.now()})}var c="-start",s="-end",f="-body",u="fn"+c,d="fn"+s,p="cb"+c,h="cb"+s,l="jsTime",m="fetch",v="addEventListener",w=window,y=w.location,b=t("loader");if(w[v]&&b.xhrWrappable){var g=t(10),x=t(11),E=t(8),P=t(6),O=t(13),R=t(7),T=t(14),L=t(9),j=t("ee"),N=j.get("tracer");t(15),b.features.spa=!0;var S,M=0;j.on(u,r),j.on(p,r),j.on(d,o),j.on(h,o),j.buffer([u,d,"xhr-done","xhr-resolved"]),P.buffer([u]),O.buffer(["setTimeout"+s,"clearTimeout"+c,u]),T.buffer([u,"new-xhr","send-xhr"+c]),R.buffer([m+c,m+"-done",m+f+c,m+f+s]),E.buffer(["newURL"]),g.buffer([u]),x.buffer(["propagate",p,h,"executor-err","resolve"+c]),N.buffer([u,"no-"+u]),L.buffer(["new-jsonp","cb-start","jsonp-error","jsonp-end"]),a(T,"send-xhr"+c),a(j,"xhr-resolved"),a(j,"xhr-done"),a(R,m+c),a(R,m+"-done"),a(L,"new-jsonp"),a(L,"jsonp-end"),a(L,"cb-start"),E.on("pushState-end",i),E.on("replaceState-end",i),w[v]("hashchange",i,!0),w[v]("load",i,!0),w[v]("popstate",function(){i(0,M>1)},!0)}},{}],5:[function(t,e,n){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(13),c=t(12),s="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",p="resource",h="-start",l="-end",m="fn"+h,v="fn"+l,w="bstTimer",y="pushState",b=t("loader");b.features.stn=!0,t(8);var g=NREUM.o.EV;o.on(m,function(t,e){var n=t[0];n instanceof g&&(this.bstStart=b.now())}),o.on(v,function(t,e){var n=t[0];n instanceof g&&i("bst",[n,e,this.bstStart,b.now()])}),a.on(m,function(t,e,n){this.bstStart=b.now(),this.bstType=n}),a.on(v,function(t,e){i(w,[e,this.bstStart,b.now(),this.bstType])}),c.on(m,function(){this.bstStart=b.now()}),c.on(v,function(t,e){i(w,[e,this.bstStart,b.now(),"requestAnimationFrame"])}),o.on(y+h,function(t){this.time=b.now(),this.startPath=location.pathname+location.hash}),o.on(y+l,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+s]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(p)]),window.performance["c"+s]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(p)]),window.performance["webkitC"+s]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],6:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&o(e)}function o(t){c.inPlace(t,[u,d],"-",i)}function i(t,e){return t[1]}var a=t("ee").get("events"),c=t(23)(a,!0),s=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,e){var n=t[1],r=s(n,"nr@wrapped",function(){function t(){if("function"==typeof n.handleEvent)return n.handleEvent.apply(n,arguments)}var e={object:t,"function":n}[typeof n];return e?c(e,"fn-",null,e.name||"anonymous"):n});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],7:[function(t,e,n){function r(t,e,n){var r=t[e];"function"==typeof r&&(t[e]=function(){var t=r.apply(this,arguments);return o.emit(n+"start",arguments,t),t.then(function(e){return o.emit(n+"end",[null,e],t),e},function(e){throw o.emit(n+"end",[e],t),e})})}var o=t("ee").get("fetch"),i=t(20);e.exports=o;var a=window,c="fetch-",s=c+"body-",f=["arrayBuffer","blob","json","text","formData"],u=a.Request,d=a.Response,p=a.fetch,h="prototype";u&&d&&p&&(i(f,function(t,e){r(u[h],e,s),r(d[h],e,s)}),r(a,"fetch",c),o.on(c+"end",function(t,e){var n=this;e?e.clone().arrayBuffer().then(function(t){n.rxSize=t.byteLength,o.emit(c+"done",[null,e],n)}):o.emit(c+"done",[t],n)}))},{}],8:[function(t,e,n){var r=t("ee").get("history"),o=t(23)(r);e.exports=r,o.inPlace(window.history,["pushState","replaceState"],"-")},{}],9:[function(t,e,n){function r(t){function e(){s.emit("jsonp-end",[],p),t.removeEventListener("load",e,!1),t.removeEventListener("error",n,!1)}function n(){s.emit("jsonp-error",[],p),s.emit("jsonp-end",[],p),t.removeEventListener("load",e,!1),t.removeEventListener("error",n,!1)}var r=t&&"string"==typeof t.nodeName&&"script"===t.nodeName.toLowerCase();if(r){var o="function"==typeof t.addEventListener;if(o){var a=i(t.src);if(a){var u=c(a),d="function"==typeof u.parent[u.key];if(d){var p={};f.inPlace(u.parent,[u.key],"cb-",p),t.addEventListener("load",e,!1),t.addEventListener("error",n,!1),s.emit("new-jsonp",[t.src],p)}}}}}function o(){return"addEventListener"in window}function i(t){var e=t.match(u);return e?e[1]:null}function a(t,e){var n=t.match(p),r=n[1],o=n[3];return o?a(o,e[r]):e[r]}function c(t){var e=t.match(d);return e&&e.length>=3?{key:e[2],parent:a(e[1],window)}:{key:t,parent:window}}var s=t("ee").get("jsonp"),f=t(23)(s);if(e.exports=s,o()){var u=/[?&](?:callback|cb)=([^&#]+)/,d=/(.*)\.([^.]+)/,p=/^(\w+)(\.|$)(.*)$/,h=["appendChild","insertBefore","replaceChild"];f.inPlace(HTMLElement.prototype,h,"dom-"),f.inPlace(HTMLHeadElement.prototype,h,"dom-"),f.inPlace(HTMLBodyElement.prototype,h,"dom-"),s.on("dom-start",function(t){r(t[0])})}},{}],10:[function(t,e,n){var r=t("ee").get("mutation"),o=t(23)(r),i=NREUM.o.MO;e.exports=r,i&&(window.MutationObserver=function(t){return this instanceof i?new i(o(t,"fn-")):i.apply(this,arguments)},MutationObserver.prototype=i.prototype)},{}],11:[function(t,e,n){function r(t){var e=a.context(),n=c(t,"executor-",e),r=new f(n);return a.context(r).getCtx=function(){return e},a.emit("new-promise",[r,e],e),r}function o(t,e){return e}var i=t(23),a=t("ee").get("promise"),c=i(a),s=t(20),f=NREUM.o.PR;e.exports=a,f&&(window.Promise=r,["all","race"].forEach(function(t){var e=f[t];f[t]=function(n){function r(t){return function(){a.emit("propagate",[null,!o],i),o=o||!t}}var o=!1;s(n,function(e,n){Promise.resolve(n).then(r("all"===t),r(!1))});var i=e.apply(f,arguments),c=f.resolve(i);return c}}),["resolve","reject"].forEach(function(t){var e=f[t];f[t]=function(t){var n=e.apply(f,arguments);return t!==n&&a.emit("propagate",[t,!0],n),n}}),f.prototype["catch"]=function(t){return this.then(null,t)},f.prototype=Object.create(f.prototype,{constructor:{value:r}}),s(Object.getOwnPropertyNames(f),function(t,e){try{r[e]=f[e]}catch(n){}}),a.on("executor-start",function(t){t[0]=c(t[0],"resolve-",this),t[1]=c(t[1],"resolve-",this)}),a.on("executor-err",function(t,e,n){t[1](n)}),c.inPlace(f.prototype,["then"],"then-",o),a.on("then-start",function(t,e){this.promise=e,t[0]=c(t[0],"cb-",this),t[1]=c(t[1],"cb-",this)}),a.on("then-end",function(t,e,n){this.nextPromise=n;var r=this.promise;a.emit("propagate",[r,!0],n)}),a.on("cb-end",function(t,e,n){a.emit("propagate",[n,!0],this.nextPromise)}),a.on("propagate",function(t,e,n){this.getCtx&&!e||(this.getCtx=function(){if(t instanceof Promise)var e=a.context(t);return e&&e.getCtx?e.getCtx():this})}),r.toString=function(){return""+f})},{}],12:[function(t,e,n){var r=t("ee").get("raf"),o=t(23)(r),i="equestAnimationFrame";e.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],13:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function o(t,e,n){this.method=n,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,n)}var i=t("ee").get("timer"),a=t(23)(i),c="setTimeout",s="setInterval",f="clearTimeout",u="-start",d="-";e.exports=i,a.inPlace(window,[c,"setImmediate"],c+d),a.inPlace(window,[s],s+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(s+u,r),i.on(c+u,o)},{}],14:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",c)}function o(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,y,"fn-",c)}function i(t){b.push(t),l&&(x?x.then(a):v?v(a):(E=-E,P.data=E))}function a(){for(var t=0;t<b.length;t++)r([],b[t]);b.length&&(b=[])}function c(t,e){return e}function s(t,e){for(var n in t)e[n]=t[n];return e}t(6);var f=t("ee"),u=f.get("xhr"),d=t(23)(u),p=NREUM.o,h=p.XHR,l=p.MO,m=p.PR,v=p.SI,w="readystatechange",y=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],b=[];e.exports=u;var g=window.XMLHttpRequest=function(t){var e=new h(t);try{u.emit("new-xhr",[e],e),e.addEventListener(w,o,!1)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(s(h,g),g.prototype=h.prototype,d.inPlace(g.prototype,["open","send"],"-xhr-",c),u.on("send-xhr-start",function(t,e){r(t,e),i(e)}),u.on("open-xhr-start",r),l){var x=m&&m.resolve();if(!v&&!m){var E=1,P=document.createTextNode(E);new l(a).observe(P,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===w||a()})},{}],15:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<d;r++)t.removeEventListener(u[r],this.listener,!1);if(!e.aborted){if(n.duration=a.now()-this.startTime,4===t.readyState){e.status=t.status;var i=o(t,this.lastSize);if(i&&(n.rxSize=i),this.sameOrigin){var s=t.getResponseHeader("X-NewRelic-App-Data");s&&(e.cat=s.split(", ").pop())}}else e.status=0;n.cbTime=this.cbTime,f.emit("xhr-done",[t],t),c("xhr",[e,n,this.startTime])}}}function o(t,e){var n=t.responseType;if("json"===n&&null!==e)return e;var r="arraybuffer"===n||"blob"===n||"json"===n?t.response:t.responseText;return l(r)}function i(t,e){var n=s(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}var a=t("loader");if(a.xhrWrappable){var c=t("handle"),s=t(16),f=t("ee"),u=["load","error","abort","timeout"],d=u.length,p=t("id"),h=t(19),l=t(18),m=window.XMLHttpRequest;a.features.xhr=!0,t(14),f.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,h&&(h>34||h<10)||window.opera||t.addEventListener("progress",function(t){e.lastSize=t.loaded},!1)}),f.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),f.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),f.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],o=this;if(n&&r){var i=l(r);i&&(n.txSize=i)}this.startTime=a.now(),this.listener=function(t){try{"abort"===t.type&&(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof e.onload))&&o.end(e)}catch(n){try{f.emit("internal-error",[n])}catch(r){}}};for(var c=0;c<d;c++)e.addEventListener(u[c],this.listener,!1)}),f.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),f.on("xhr-load-added",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),f.on("xhr-load-removed",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),f.on("addEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-added",[t[1],t[2]],e)}),f.on("removeEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-removed",[t[1],t[2]],e)}),f.on("fn-start",function(t,e,n){e instanceof m&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),f.on("fn-end",function(t,e){this.xhrCbStart&&f.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,e],e)})}},{}],16:[function(t,e,n){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!e.protocol||":"===e.protocol||e.protocol===n.protocol,a=e.hostname===document.domain&&e.port===n.port;return r.sameOrigin=i&&(!e.hostname||a),r}},{}],17:[function(t,e,n){function r(){}function o(t,e,n){return function(){return i(t,[f.now()].concat(c(arguments)),e?null:this,n),e?void 0:this}}var i=t("handle"),a=t(20),c=t(21),s=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",h=p+"ixn-";a(d,function(t,e){u[e]=o(p+e,!0,"api")}),u.addPageAction=o(p+"addPageAction",!0),u.setCurrentRouteName=o(p+"routeName",!0),e.exports=newrelic,u.interaction=function(){return(new r).get()};var l=r.prototype={createTracer:function(t,e){var n={},r=this,o="function"==typeof e;return i(h+"tracer",[f.now(),t,n],r),function(){if(s.emit((o?"":"no-")+"fn-start",[f.now(),r,o],n),o)try{return e.apply(this,arguments)}catch(t){throw s.emit("fn-err",[arguments,this,t],n),t}finally{s.emit("fn-end",[f.now()],n)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){l[e]=o(h+e)}),newrelic.noticeError=function(t){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now()])}},{}],18:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],19:[function(t,e,n){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),e.exports=r},{}],20:[function(t,e,n){function r(t,e){var n=[],r="",i=0;for(r in t)o.call(t,r)&&(n[i]=e(r,t[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],21:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(o<0?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=r},{}],22:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],23:[function(t,e,n){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(21),a="nr@original",c=Object.prototype.hasOwnProperty,s=!1;e.exports=function(t,e){function n(t,e,n,o){function nrWrapper(){var r,a,c,s;try{a=this,r=i(arguments),c="function"==typeof n?n(r,a):n||{}}catch(f){p([f,"",[r,a,o],c])}u(e+"start",[r,a,o],c);try{return s=t.apply(a,r)}catch(d){throw u(e+"err",[r,a,d],c),d}finally{u(e+"end",[r,a,s],c)}}return r(t)?t:(e||(e=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,e,o,i){o||(o="");var a,c,s,f="-"===o.charAt(0);for(s=0;s<e.length;s++)c=e[s],a=t[c],r(a)||(t[c]=n(a,f?c+o:o,i,c))}function u(n,r,o){if(!s||e){var i=s;s=!0;try{t.emit(n,r,o,e)}catch(a){p([a,n,r,o])}s=i}}function d(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){p([r])}for(var o in t)c.call(t,o)&&(e[o]=t[o]);return e}function p(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=o),n.inPlace=f,n.flag=a,n}},{}],ee:[function(t,e,n){function r(){}function o(t){function e(t){return t&&t instanceof r?t:t?s(t,c,i):i()}function n(n,r,o,i){if(!p.aborted||i){t&&t(n,r,o);for(var a=e(o),c=l(n),s=c.length,f=0;f<s;f++)c[f].apply(a,r);var d=u[y[n]];return d&&d.push([b,n,r,a]),a}}function h(t,e){w[t]=l(t).concat(e)}function l(t){return w[t]||[]}function m(t){return d[t]=d[t]||o(n)}function v(t,e){f(t,function(t,n){e=e||"feature",y[n]=e,e in u||(u[e]=[])})}var w={},y={},b={on:h,emit:n,get:m,listeners:l,context:e,buffer:v,abort:a,aborted:!1};return b}function i(){return new r}function a(){(u.api||u.feature)&&(p.aborted=!0,u=p.backlog={})}var c="nr@context",s=t("gos"),f=t(20),u={},d={},p=e.exports=o();p.backlog=u},{}],gos:[function(t,e,n){function r(t,e,n){if(o.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[e]=r,r}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){o.buffer([t],r),o.emit(t,e,n)}var o=t("ee").get("handle");e.exports=r,r.ee=o},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!x++){var t=g.info=NREUM.info,e=p.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();f(y,function(e,n){t[e]||(t[e]=n)}),s("mark",["onload",a()+g.offset],null,"api");var n=p.createElement("script");n.src="https://"+t.agent,e.parentNode.insertBefore(n,e)}}function o(){"complete"===p.readyState&&i()}function i(){s("mark",["domContent",a()+g.offset],null,"api")}function a(){return E.exists&&performance.now?Math.round(performance.now()):(c=Math.max((new Date).getTime(),c))-g.offset}var c=(new Date).getTime(),s=t("handle"),f=t(20),u=t("ee"),d=window,p=d.document,h="addEventListener",l="attachEvent",m=d.XMLHttpRequest,v=m&&m.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:m,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var w=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-spa-1071.min.js"},b=m&&v&&v[h]&&!/CriOS/.test(navigator.userAgent),g=e.exports={offset:c,now:a,origin:w,features:{},xhrWrappable:b};t(17),p[h]?(p[h]("DOMContentLoaded",i,!1),d[h]("load",r,!1)):(p[l]("onreadystatechange",o),d[l]("onload",r)),s("mark",["firstbyte",c],null,"api");var x=0,E=t(22)},{}]},{},["loader",2,15,5,3,4]);</script>
+  <meta name="copyright" content="Trustnet Limited 2018">
+  <meta name="verify-v1" content="JnKYMCyNNsEXyUV1fo/Bbu1aO77l2WwhxoQMfEi9xOQ=">
+
+  <meta http-equiv="P3P" content="CP=&quot;IDC DSP COR CUR ADM OUR IND ONL COM STA DEV PSA IVA HIS&quot;">
+  <meta name="description" content="RNS News &amp; Announcements: Company Announcement  from Juno(Eclipse 2007-2) (IRSH)  News, Press Releases, Share Prices &amp; Performance indices.">
+
+  <meta name="Googlebot-Mobile" content="noindex,follow">
+  <meta name="msvalidate.01" content="6C74DDA51F5DEC5571B35F9B9FE7906C">
+
+
+  <link rel="canonical" href="https://www2.trustnet.com/Investments/Article.aspx">
+
+  <!--NoIndex URL-->
+
+
+
+  <!--DBWK_LV_TRN_02-->
+  <!--DSS1WEB-TN2-->
+  <title>Company Announcement | Juno(Eclipse 2007-2) (IRSH) | RNS Company Announcements | Equities  | FE Trustnet</title>
+  <!--[if lte IE 7 ]>
+  <script type="text/javascript" src='../../js/json2.js'></script>
+  <![endif]-->
+  <script src="https://www.googletagservices.com/tag/js/gpt.js"></script>
+
+
+  <link type="text/css" href="/v18.9.6571.21151/FCCSS__NewLayoutCSS/css/ResourceHandler.axd" rel="Stylesheet">
+  <link type="text/css" href="/v18.9.6571.21151/FNCSS__MAGPOPUP/css/ResourceHandler.axd" rel="Stylesheet">
+
+
+
+  <script type="text/javascript" src="/v18.9.6571.21151/JQJS__FNSC/js/ResourceHandler.axd"></script>
+  <script type="text/javascript" src="/v18.9.6571.21151/JqueryUi/js/ResourceHandler.axd"></script>
+
+  <script type="text/javascript" src="/v18.9.6571.21151/JStorage/js/ResourceHandler.axd"></script>
+
+
+
+  <!--[if lte IE 9]>
+  <script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/jquery-ajaxtransport-xdomainrequest/1.0.3/jquery.xdomainrequest.min.js'></script>
+  <![endif]-->
+
+
+  <script type="text/javascript" src="/v18.9.6571.21151/AJAXHANDLERS/js/ResourceHandler.axd"></script>
+  <script type="text/javascript" src="/v18.9.6571.21151/JAlert/js/ResourceHandler.axd"></script>
+  <script type="text/javascript" src="/v18.9.6571.21151/JSON__PostScribe__MagnificPopup__YoutubeJs/js/ResourceHandler.axd"></script>
+
+  <script type="text/javascript">/*... Translation related common tokens which will get replaced during design page rendering. */ var tPortfolio = 'Portfolio';var tWatchList = 'Watchlist';var tBasket = 'Basket';var tChartingdesc = 'Then... Select fund to add to chart';var tLoading = 'Loading..';var tChartingdesc3 = 'Select a group';var tChartingdesc4 = 'Select a sector';var tChartingdesc5 = 'Select Main Index';var tChartingdesc6 = 'Select an Index';var tChooseAFund = 'Choose a fund';var tChooseAnIndex = 'Choose an index';var tChooseASector = 'Choose a sector';var tResults = 'Results';var tMonthOption = '24:24 Months,18:18 Months,12:12 Months,9:9 Months,6:6 Months,3:3 Months,1:1 month';var tYearOption = '60:5 Years,36:3 Years,12:1 year';var tOR = 'OR';var tSelectPortfolio = 'Select a Portfolio';var tFunds = 'funds';var tFound = 'found';var tAddthisunitBasket = 'Add this unit to basket';var tRemovethisunitbasket = 'Remove this unit from basket';var tNovalueinsave = 'No Value in Save';var tMandatory = 'You must enter values for mandatory (*) fields.';var tLogindesc = 'Sorry, you must be logged in to use this feature';var tsplChar = 'Special Characters not allowed in password';var tNotMatch = 'New Password and Confirm Password doesnot match';var taddbasket = 'add to basket';var tSearchAlert = 'Value should not be empty and should be more than four letters';var tShowing = 'Showing';var tFunds = 'funds';var tFund = 'fund';var tUnits = 'units';var tUnit = 'units';var tOF = 'of';var tLogin = 'Login';var tRegister = 'Register';var tcomment = 'Please enter your comment';var tInvalidEmailID = 'Invalid E-mailID';var tInvalidEmailIDDesc1 = 'Please Enter your Email ID ';var tLock = 'Lock';var tAllSectors = 'All Sectors';var tAllManagers = 'All Managers';var tAllDomiciles = 'All Domiciles';var tAddBasketNew = 'basket';var tAddToNew = 'add to';var tRemoveFromNew = 'remove from';</script>
+  <script type="text/javascript">
+    jQuery.noConflict();
+  </script>
+
+
+  <script type="text/javascript" src="/v18.9.6571.21151/FNJS__AdsDFP/js/ResourceHandler.axd"></script>
+
+
+  <link href="/v18.9.6571.21151/PrintCSS/css/ResourceHandler.axd" rel="stylesheet" type="text/css" media="print">
+  <!--[if lt IE 8]>
+  <link href="/css/IEPrintStyle.css?v=20090213" rel="stylesheet" type="text/css" media="print"  />
+  <![endif]-->
+  <!--[if IE 6]>
+  <link href="/css/fundswire/IE6CommonStyle.css" rel="stylesheet" />
+  <![endif]-->
+  <link href="/favicon.ico?v=v18.9.6571.21151" rel="icon" type="image/x-icon">
+  <link href="/favicon.ico?v=v18.9.6571.21151" rel="shortcut icon" type="image/x-icon">
+  <link rel="apple-touch-icon" href="/images/touch-icon-iphone.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/touch-icon-ipad.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/touch-icon-ipad-hi.png">
+
+  <script type="text/javascript">
+
+    var overlayWidth = '';
+  </script>
+</head>
+<body itemscope="" itemtype="http://schema.org/WebPage" ng-controller="commonController">
+
+<!-- Line_Item_Name out of page --> <div id="gpt-trustnet-outofpage"></div>
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P2VJLH" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>    (function (w, d, s, l, i) {
+  w[l] = w[l] || []; w[l].push({ 'gtm.start':
+      new Date().getTime(), event: 'gtm.js'
+  }); var f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+      'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-P2VJLH');</script>
+<!-- End Google Tag Manager -->
+
+
+<div class="wrapper_centre js_page_wrapper">
+  <!-- ClickTale Top part -->
+  <script type="text/javascript">
+    var WRInitTime = (new Date()).getTime();
+  </script>
+
+  <div class="top-banner" id="TopbannerAd">
+    <div id="gpt-trustnet-top" class="noPrint" align="center"></div>
+  </div>
+  <div class="add-bannerLeft" id="TopLeft">
+    <div id="gpt-trustnet-topleft" class="noPrint"></div>
+  </div>
+  <form id="masterForm" name="masterForm" method="post" onsubmit="javascript:preventUnloadPrompt = true;">
+
+    <div id="main-wrap">
+
+      <script type="text/javascript">
+        ResizeTNNewPage();
+      </script>
+
+
+
+      <script type="text/javascript"><!--    //--><![CDATA[//><!--
+      // ads
+      //share cookie across subdomains
+      (function () {
+        var invtype = GetCookie('invtype');
+        var userId = GetCookie("TN_UserId");
+        DeleteCookie('TN_UserId', '/', '');
+        DeleteCookie('invtype', '/', '');
+        SetCookie("invtype", invtype, 30, null, GetDomainName());
+        SetCookie("TN_UserId", userId, 30, null, GetDomainName());
+      })();
+      var LogDBServerExecTime = '';
+      var FNewsDBServerExecTime = '';
+      var chartcolorarray = "#327EBE,#FF0000,#FFB81B,#008D00,#8ED400,#00C2B1,#D69701,#AC0481,#000000,#0000FF,#06A1FD,#FF6600,#E318E3,#890BF4,#990000";
+
+      var TN_Usertype = 'unknown';
+      var TN_Author = '';
+      var TN_MgrID = '';
+      var TN_MgrPersonID = '';
+      var TN_FundSubscription = '0';
+      var TN_FundSectorID = '';
+      var TN_AssetClassID = '';
+      var TN_SearchTxt = '';
+      var TN_NewsTopic = 'none';
+      var TN_FundUniverse = '';
+      var TN_FundGeoID = '';
+      var TN_NewsID = '';
+      var TN_PortSectorID = '';
+      var TN_Zone = '';
+      var TN_FundID = '';
+      var TN_FundGroupID = '';
+      var TN_Environment = 'Live';
+      var TN_Top = '600';
+      var TN_TopRight = '600';
+
+      var iframead = 0;
+      var siteUniverse = 'O';
+      var emailSiteCode = "TNUK";
+      var emailSiteName = "FE Trustnet";
+      var emailSitemailid = "mail@trustnet.com";
+      var emailDomain = "www2.trustnet.com";
+      var logoName = "FETN_Logo.png";
+      var siteUserEmail = "";
+      var isIFAFileExist = "No";
+      var isWhiteLabel = "No";
+      var wlLogoName = "FETN_Logo.png";
+      var isUniqueLogo = "No";
+      var isIFAUser = "0";
+      var ifaUserName = "";
+      var ifaUserEmail = "";
+      var registeredUserId = "";
+      var referUrl = "/Investments/Article.aspx?id=201801031527288873A";
+      var SiteCode = 'TNUK';
+      var AddedRelNews = "";
+      var UserFundswireCodes = '';
+      var UniverseCode = '';
+      var LanguageId = 1;
+      var isNewHeader = true;
+      SetCookie("TN_TranslateLang", "EN_UK", 123231);
+      var lastClickSubMenu = '';
+      var SiteUnivCodeNames = "U:Unit Trusts & OEICs,O:IA Unit Trusts & OEICs,T:Investment Trusts,P:Pension Funds,N:Life Funds,B:Offshore Funds,E:Exchange Traded Funds,VCT:Venture Capital Trusts";
+      var UniverseBySectors = 'O';
+      var basketCount = 0;
+      var basketCloseOpt = "";
+      var preventUnloadPrompt;
+      var messageBeforeUnload = "You have funds in a basket, Are you sure you want to exit?";
+      var basketPopUpDragPos = '';  //left,top
+      var isbasketPopupHide = false;
+      var basketPopupHideCnt = 0;
+      var BasketAllGFFundObj = [];
+      var newUserType = '0';
+      //Load login details when user already logged in
+
+      //--><!]]>
+
+      </script>
+
+      <div class="header-content">
+        <span class="logo"><a href="/">Trustnet</a></span>
+        <div class="investazine-add">
+          <div id="gpt-trustnet-top1" style="margin-left: 100px;" class="noPrint"></div>
+        </div>
+        <div class="utility-content">
+          <ul class="utility-navi" id="LoginHeader">
+            <li><a ng-click="printPage();" title="Print" href="javascript:void(0);"><span class="icon_print"></span></a></li>
+            <li><a href="/Help/Help.aspx" title="Help"><span class="icon_help"></span></a></li>
+            <li><a href="/Help/ContactUs.aspx" title="Contact Us"><span class="icon_mail"></span></a></li>
+            <li class="login" id="login"><a onclick="javascript:ShowLoginPopup('LoginPopupPanel');" title="Login"><span class="icon_login"></span><label id="plhusername">Login</label></a></li>
+          </ul>
+          <div class="top-search row-wrap">
+            <div id="gpt-trustnet-top2" style="float:left;" class="noPrint"></div>
+            <input type="text" name="txtSearch" id="txtKeyword" class="search-fld" onkeyup="javascript:FESearchKeyUp(event, this.id);" maxlength="256" value="Search FE Trustnet" onfocus="FocusTextField(this.id,'Search FE Trustnet')" onblur="CheckTextField(this.id,'Search FE Trustnet')">
+
+            <button class="search-btn" type="button" onclick="javascript:FESearch('txtKeyword');return false;"></button>
+          </div>
+
+        </div>
+      </div>
+      <div id="TopPosDiv" style="display:block; height:0px; width:190px; padding:0px; margin :0px; float :left;"></div>
+
+
+      <!-- user type -->
+      <input type="hidden" id="invtype" name="invtype" value="">
+      <iframe id="investorSelectorIFrame" src="" frameborder="0" style="height: 0px; z-index: 200000;" scrolling="no"></iframe>
+      <div id="InvestorSelector">
+      </div>
+
+      <div class="wholeCover" id="wholeCover" style="left :0px; top :0px;"></div>
+
+      <div id="LoginNewPopupPanel" class="LoginNewPopupPanel" style="top:111px;left:432px;">
+        <div class="content1 loginPannel checkbox">
+          <div id="logiPopUpcheck">
+            <p style="font-size:15px;"><strong>To continue using this website, please tell us a <br> little about yourself:</strong></p>
+            <p><input class="checkbox" type="checkbox" id="Checkbox_1" name="I am a financial advisor" checked="checked" value="Adviser" style="font-weight:bold;font-size:12px;"><label for="Checkbox_1"> I am a financial adviser</label></p>
+            <p><input class="checkbox" type="checkbox" id="Checkbox_2" name="Discretionary fund manager/Multimanager" value="Discretionary" style="font-weight:bold;font-size:12px;"><label for="Checkbox_2"> I am a discretionary fund manager / multimanager</label></p>
+            <p><input class="checkbox" type="checkbox" id="Checkbox_3" name="Financial Para planner" value="Paraplanner" style="font-weight:bold;font-size:12px;"><label for="Checkbox_3"> I am a financial paraplanner</label></p>
+            <p><input class="checkbox" type="checkbox" id="Checkbox_4" name="Finance Professional" value="MarketPro" style="font-weight:bold;font-size:12px;"><label for="Checkbox_4"> I work in financial services</label></p>
+            <p><input class="checkbox" type="checkbox" id="Checkbox_5" name="Private Investor" value="Investor" style="font-weight:bold;font-size:12px;"><label for="Checkbox_5"> I am a private investor</label></p>
+          </div>
+          <div id="Div1" style="width:355px;height:113px; font-size:11px;">
+            This site uses cookies.  Some of the cookies are essential for parts of the site to operate and have already been set.
+            You may delete and block all cookies from this site, but if you do, parts of the site may not work.  To find out more
+            about cookies on the website and how to delete cookies, see our <a href="/Education/PrivacyPolicy.aspx">Privacy and Cookie Policy</a>.
+            <br><br>
+            <input type="checkbox" id="ChkCookie" name="ChkCookie" checked="checked" value="" style="font-weight:bold;margin-left:55px;"><strong> I accept the FE Trustnet cookie policy</strong><br><br>
+          </div>
+          <div class="spaceBottom_margin" id="investorCheck">
+            <a class="go alignLeft">Continue</a>
+          </div>
+          <div class="moreInfo" style="font-size:11px;">For more information <a title="For more information Click here" class="info" href="/help/popup.aspx">Click here</a></div>
+        </div>
+      </div>
+
+      <script type="text/javascript"><!--    //--><![CDATA[//><!--
+      InitInvestorSelector("unknown")
+      //--><!]]>
+      newUserType = '0';
+      </script>
+
+      <script type="text/javascript">
+        var univCookie=false;
+        jQuery("input[type='checkbox']").change(function() {
+          jQuery(this).closest("#logiPopUpcheck").find("input[type='checkbox']").not(this).prop("checked", false);
+          jQuery(this).prop("checked", true);
+        });
+        jQuery('#investorCheck').on('click', function () {
+          var values = []
+          jQuery('.checkbox:checked').each(function () {
+            var e = jQuery(this);
+            values.push(e.val());
+          });
+          if(jQuery("#ChkCookie").length!=0 && jQuery("#ChkCookie:checked").length == 0)
+          {
+            alert("The user must accept cookie policy to proceed");
+            return;
+          }
+          if (values!=null && values!='') {
+            var user_type= values[0];
+            SetNewTopPopUpInvType(user_type);
+            SetCookie('NewuserPopUp','1',365);
+            var paramArray;
+            if (registeredUserId != '' && newUserType != '1')
+            {
+              paramArray = ['userid', registeredUserId, 'userType', values];
+              var param = JOSONParameter(paramArray);
+              AjaxCall('/Webservices/JqueryTest.asmx', 'POST', 'application/json', 'UpdatePopupCookiePolicy', param, true, CallBack);
+            }
+          }
+          else {
+            alert("The user must select usertype to proceed");
+            return;
+          }
+        });
+      </script>
+
+
+      <div class="navi-content">
+
+        <ul class="top-navi" id="ulMainNavNew">
+          <li><a id="Investments" href="/unit-trusts/price-performance?univ=O">Investments</a>
+            <ul class="sub-menu investments">
+              <li id="feUTSector" class="displayNone"><a>Unit Trusts &amp; OEICs<span class="icon_arrow"></span></a>
+                <ul class="child-menu">
+                  <li><a href="/unit-trusts-oeic">Unit Trusts &amp; OEICs Home</a></li>
+                  <li><a href="/unit-trusts/price-performance?univ=U">Prices &amp; Performance</a></li>
+                  <li><a href="/Investments/MultiManagerMixedAsset.aspx?univ=U">Multi-manager &amp; Mixed Asset</a></li>
+
+                  <li><a href="/ratings/?univ=U">UT&amp;OEIC Ratings</a></li>
+                  <li><a href="/Investments/FundsList.aspx?univ=U">A-Z Fund Factsheets</a></li>
+                  <li><a href="/Investments/GroupsList.aspx?univ=U">A-Z Group Factsheets</a></li>
+                  <li><a href="/Investments/SectorPerf.aspx?univ=U">A-Z Sectors</a></li>
+                  <li><a href="/learn/learnaboutinvesting/Investing-in-a-fund.html">Funds Guide</a></li>
+                  <li><a href="/Investments/MostPopularFundList.aspx?univ=U">Most viewed funds</a></li>
+                  <li><a href="/Investments/MostPopularGroupList.aspx?univ=U">Most viewed groups</a></li>
+                </ul>
+              </li>
+
+              <li id="imaUTSector" class="displayNone"><a>IA Unit Trusts &amp; OEICs<span class="icon_arrow"></span></a>
+                <ul class="child-menu">
+                  <li><a href="/ia-unit-trusts-oeic">IA Unit Trusts &amp; OEICs Home</a></li>
+                  <li><a href="/ia-unit-trusts/price-performance?univ=O">Prices &amp; Performance</a></li>
+                  <li><a href="/Investments/MultiManagerMixedAsset.aspx?univ=O">Multi-manager &amp; Mixed Asset</a></li>
+
+                  <li><a href="/ratings/?univ=O">IA UT&amp;OEIC Ratings</a></li>
+                  <li><a href="/Investments/FundsList.aspx?univ=O">A-Z Fund Factsheets</a></li>
+                  <li><a href="/Investments/GroupsList.aspx?univ=O">A-Z Group Factsheets</a></li>
+                  <li><a href="/Investments/SectorPerf.aspx?univ=O">A-Z Sectors</a></li>
+                  <li><a href="/learn/learnaboutinvesting/Investing-in-a-fund.html">Funds Guide</a></li>
+                  <li><a href="/Investments/MostPopularFundList.aspx?univ=O">Most viewed funds</a></li>
+                  <li><a href="/Investments/MostPopularGroupList.aspx?univ=O">Most viewed groups</a></li>
+                </ul>
+              </li>
+
+              <li><a>Equities<span class="icon_arrow"></span></a>
+                <ul class="child-menu">
+                  <li><a href="/equities/">Equities Home</a></li>
+                  <li><a href="/share-prices-and-performance-list-equities">Prices &amp; Performance</a></li>
+                  <li><a href="/Investments/EquityList.aspx">A-Z Equity Factsheets</a></li>
+                  <li><a href="/Investments/LatestAnnouncements.aspx">Latest announcements</a></li>
+                </ul>
+              </li>
+              <li><a>Investment Trusts<span class="icon_arrow"></span></a>
+                <ul class="child-menu">
+                  <li><a href="/investment-trusts/">Investment Trusts Home</a></li>
+                  <li><a href="/investment-trusts/price-performance?univ=T">Prices &amp; Performance</a></li>
+                  <li><a href="/ratings/?univ=T">Investment Trust Ratings</a></li>
+                  <li><a href="/Investments/FundsList.aspx?univ=T">A-Z Investment Trust Factsheets</a></li>
+                  <li><a href="/Investments/GroupsList.aspx?univ=T">A-Z Group Factsheets</a></li>
+                  <li><a href="/Investments/Warrants.aspx?univ=T">A-Z Warrants</a></li>
+                  <li><a href="/Investments/SectorPerf.aspx?univ=T">A-Z Sectors</a></li>
+                  <li><a href="/Investments/SplitCapitalAnalytics.aspx?univ=T">Split Capital Analytics</a></li>
+                  <li><a href="/learn/learnaboutinvesting/Investment-trusts.html">Investment Trust Guide</a></li>
+                  <li><a href="/Investments/MostPopularFundList.aspx?univ=T">Most viewed investment trusts</a></li>
+                  <li><a href="/Investments/MostPopularGroupList.aspx?univ=T">Most viewed groups</a></li>
+                </ul>
+              </li>
+              <li><a>Pensions<span class="icon_arrow"></span></a>
+                <ul class="child-menu">
+                  <li><a href="/pension-funds/">Pensions Home</a></li>
+                  <li><a href="/pension-funds/price-performance?univ=P">Prices &amp; Performance</a></li>
+                  <li><a href="/ratings/?univ=P">Pension Fund Ratings</a></li>
+                  <li><a href="/Investments/FundsList.aspx?univ=P">A-Z Pension Fund Factsheets</a></li>
+                  <li><a href="/Investments/LPGroupsList.aspx?univ=P">A-Z Group Factsheets</a></li>
+                  <li><a href="/Investments/LPProductsList.aspx?univ=P">A-Z Pension Product Factsheets</a></li>
+                  <li><a href="/Investments/SectorPerf.aspx?univ=P">A-Z Sectors</a></li>
+
+                  <li><a href="/Investments/MostPopularFundList.aspx?univ=P">Most viewed funds</a></li>
+                  <li><a href="/Investments/MostPopularGroupList.aspx?univ=P">Most viewed groups</a></li>
+                </ul>
+              </li>
+              <li><a>Life<span class="icon_arrow"></span></a>
+                <ul class="child-menu">
+                  <li><a href="/life-insurance/">Life Home</a></li>
+                  <li><a href="/life-funds/price-performance?univ=N">Prices &amp; Performance</a></li>
+                  <li><a href="/ratings/?univ=N">A-Z Life Fund Ratings</a></li>
+                  <li><a href="/Investments/FundsList.aspx?univ=N">A-Z Life Fund Factsheets</a></li>
+                  <li><a href="/Investments/LPGroupsList.aspx?univ=N">A-Z Life Group Factsheets</a></li>
+                  <li><a href="/Investments/LPProductsList.aspx?univ=N">A-Z Life Product Factsheets</a></li>
+                  <li><a href="/Investments/SectorPerf.aspx?univ=N">A-Z Sectors</a></li>
+                  <li><a href="/Education/Glossaries/Insurance.aspx">Life insurance glossary</a></li>
+                  <li><a href="/Investments/MostPopularFundList.aspx?univ=N">Most viewed funds</a></li>
+                  <li><a href="/Investments/MostPopularGroupList.aspx?univ=N">Most viewed groups</a></li>
+                </ul>
+              </li>
+              <li><a>Offshore Funds<span class="icon_arrow"></span></a>
+                <ul class="child-menu">
+                  <li><a href="/offshore-funds/">Offshore Funds Home</a></li>
+                  <li><a href="/offshore-funds/price-performance?univ=B">Prices &amp; Performance</a></li>
+                  <li><a href="/ratings/?univ=B">Offshore Fund Ratings</a></li>
+                  <li><a href="/Investments/FundsList.aspx?univ=B">A-Z Offshore Fund Factsheets</a></li>
+                  <li><a href="/Investments/GroupsList.aspx?univ=B">A-Z Group Factsheets</a></li>
+                  <li><a href="/Investments/SectorPerf.aspx?univ=B">A-Z Sectors</a></li>
+                  <li><a href="/learn/learnaboutinvesting/Onshore-and-offshore---what%E2%80%99s-the-difference.html">Offshore Funds Guide</a></li>
+                  <li><a href="/Investments/MostPopularFundList.aspx?univ=B">Most viewed funds</a></li>
+                  <li><a href="/Investments/MostPopularGroupList.aspx?univ=B">Most viewed groups</a></li>
+                </ul>
+              </li>
+              <li><a>ETFs<span class="icon_arrow"></span></a>
+                <ul class="child-menu">
+                  <li><a href="/exchange-traded-funds/">ETFs Home</a></li>
+                  <li><a href="/exchange-traded-funds/price-performance?univ=E">ETF Prices &amp; Performance</a></li>
+                  <li><a href="/ratings/?univ=E">ETF Fund Ratings</a></li>
+                  <li><a href="/Investments/FundsList.aspx?univ=E">A-Z ETF Factsheets</a></li>
+                  <li><a href="/Investments/GroupsList.aspx?univ=E">A-Z Group Factsheets</a></li>
+                  <li><a href="/Investments/SectorPerf.aspx?univ=E">A-Z Sectors</a></li>
+                  <li><a href="/learn/learnaboutinvesting/Exchange-Traded-Funds-(ETFs).html">ETFs Guide</a></li>
+                  <li><a href="/Investments/MostPopularFundList.aspx?univ=E">Most viewed funds</a></li>
+                  <li><a href="/Investments/MostPopularGroupList.aspx?univ=E">Most viewed groups</a></li>
+                </ul>
+              </li>
+              <li><a>VCTs<span class="icon_arrow"></span></a>
+                <ul class="child-menu">
+                  <li><a href="/venture-capital-trusts/">VCTs Home</a></li>
+                  <li><a href="/venture-capital-trusts/price-performance?univ=VCT">VCT Prices &amp; Performance</a></li>
+                  <li><a href="/Investments/VCTFundsList.aspx">A-Z VCT Factsheets</a></li>
+                  <li><a href="/Education/VCT.aspx">VCTs Guide</a></li>
+                  <li><a href="/Investments/MostPopularFundList.aspx?univ=VCT">Most viewed funds</a></li>
+                  <li><a href="/Investments/MostPopularGroupList.aspx?univ=VCT">Most viewed groups</a></li>
+                </ul>
+              </li>
+
+              <li id="structuredProducts" class="displayNone"><a>Structured Products<span class="icon_arrow"></span></a>
+                <ul class="child-menu">
+                  <li><a href="/investments/structured-products/">Structured Products Home</a></li>
+                  <li><a href="/Investments/StructuredProductPerf.aspx">A-Z Structured Product Factsheets</a></li>
+                  <li><a href="/Investments/SPGroupsList.aspx">A-Z Group Factsheets</a></li>
+                  <li><a href="/Education/Structuredproduct.aspx">Structured products guide</a></li>
+                  <li><a href="/Education/Glossaries/StructuredProducts.aspx">Structured products glossary</a></li>
+                </ul>
+              </li>
+
+            </ul>
+          </li>
+          <li><a id="Managers" href="/Managers/">Fund Managers</a>
+            <ul class="sub-menu fund_managers">
+              <li><a href="/Managers/">Fund Managers Home</a></li>
+              <li><a href="/Managers/AlphaManagers.aspx">Alpha managers</a></li>
+              <li><a href="/Managers/ManagerPerf.aspx">League table</a> </li>
+              <li><a href="/Managers/ManagersList.aspx">A-Z manager factsheets</a> </li>
+            </ul>
+          </li>
+          <li><a id="News" href="/News/">News &amp; Research</a>
+            <ul class="sub-menu news_research">
+              <li><a href="/News/">News &amp; Research Home</a></li>
+              <li><a href="/News/Research.aspx?type=research">News Archive</a></li>
+              <li><a>Education guides<span class="icon_arrow"></span></a>
+                <ul class="child-menu">
+                  <li><a href="/learn/learnaboutinvesting.aspx">Education guides home</a></li>
+                  <li><a href="/learn/learnaboutinvesting/Emerging-markets.html">Emerging Market</a>
+                  </li>
+                  <li><a href="/learn/learnaboutinvesting/Exchange-Traded-Funds-(ETFs).html">ETFs</a></li>
+                  <li><a href="/learn/learnaboutinvesting/Investing-in-a-fund.html">Unit Trust &amp; OEIC</a>
+                  </li>
+                  <li><a href="/learn/learnaboutinvesting/Investment-trusts.html">Investment trust</a>
+                  </li>
+                  <li><a href="/learn/learnaboutinvesting/Onshore-and-offshore---what%E2%80%99s-the-difference.html">
+                    Offshore funds</a> </li>
+                  <li><a href="/learn/learnaboutinvesting/What-is-an-ISA%3F.html">ISAs</a> </li>
+                </ul>
+              </li>
+              <li><a href="/news/videosarchive.aspx">FE Trustnet Videos</a> </li>
+              <li><a href="/news/video.aspx">Bright-talk Videos</a> </li>
+
+            </ul>
+          </li>
+          <li><a id="Learning" href="/learn/learnaboutinvesting.aspx">Learning</a>
+            <ul class="sub-menu learning">
+              <li><a href="/learn/learnaboutinvesting.aspx">Learn about investing</a></li>
+              <li><a>Investment basics<span class="icon_arrow"></span></a>
+                <ul class="child-menu">
+                  <li><a href="/learn/learnaboutinvesting/Pensions.html">Pensions</a></li>
+                  <li><a href="/learn/learnaboutinvesting/Investing-in-a-fund.html">Investing in a fund</a></li>
+                  <li><a href="/learn/learnaboutinvesting/Investment-trusts.html">Investment trusts</a></li>
+                  <li><a href="/learn/learnaboutinvesting/Exchange-Traded-Funds-(ETFs).html">Exchange
+                    Traded Funds (ETFs)</a></li>
+                  <li><a href="/learn/learnaboutinvesting/Passive-funds-and-trackers.html">Passive funds
+                    and trackers</a></li>
+                  <li><a href="/learn/learnaboutinvesting/What-is-an-ISA%3F.html">What is an ISA?</a></li>
+                </ul>
+              </li>
+              <li><a>What to invest in?<span class="icon_arrow"></span></a>
+                <ul class="child-menu">
+                  <li><a href="/learn/learnaboutinvesting/Bonds.html">Bonds</a></li>
+                  <li><a href="/learn/learnaboutinvesting/Equities.html">Equities</a></li>
+                  <li><a href="/learn/learnaboutinvesting/Property.html">Property</a></li>
+                  <li><a href="/learn/learnaboutinvesting/Commodities.html">Commodities</a></li>
+                </ul>
+              </li>
+              <li><a>Where to invest?<span class="icon_arrow"></span></a>
+                <ul class="child-menu">
+                  <li><a href="/learn/learnaboutinvesting/UK.html">UK</a></li>
+                  <li><a href="/learn/learnaboutinvesting/US.html">US</a></li>
+                  <li><a href="/learn/learnaboutinvesting/Europe.html">Europe</a></li>
+                  <li><a href="/learn/learnaboutinvesting/Emerging-markets.html">Emerging markets</a></li>
+                  <li><a href="/learn/learnaboutinvesting/Asia.html">Asia</a></li>
+                </ul>
+              </li>
+              <li><a>How to invest?<span class="icon_arrow"></span></a>
+                <ul class="child-menu">
+                  <li><a href="/learn/learnaboutinvesting/Setting-objectives-for-your-portfolio.html">
+                    Setting objectives for your portfolio</a></li>
+                  <li><a href="/learn/learnaboutinvesting/Asset-allocation---the-basics.html">Asset allocation
+                    - the basics</a></li>
+                  <li><a href="/learn/learnaboutinvesting/Measuring-performance.html">Measuring performance</a></li>
+                  <li><a href="/learn/learnaboutinvesting/Onshore-and-offshore---what’s-the-difference.html">
+                    Onshore and offshore - what’s the difference</a></li>
+                </ul>
+              </li>
+              <li><a>Fund ratings<span class="icon_arrow"></span></a>
+                <ul class="child-menu">
+                  <li><a href="/learn/learnaboutinvesting/fe-ratings.html">About FE Ratings</a></li>
+                  <li><a href="/learn/learnaboutinvesting/FE-Crown-Fund-Ratings.html">FE Crown Fund Ratings</a></li>
+                  <li><a href="/learn/learnaboutinvesting/fe-passive-fund-ratings.html">FE Passive Fund Ratings</a></li>
+                  <li><a href="/learn/learnaboutinvesting/FE-Alpha-Manager-Ratings.html">FE Alpha Manager
+                    Ratings</a></li>
+                  <li><a href="/learn/learnaboutinvesting/FE-Risk-Scores.html">FE Risk Scores</a></li>
+                  <li><a href="/learn/learnaboutinvesting/The-Adviser-Fund-Index.html">The Adviser Fund
+                    Index</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li><a id="Portfolio" href="/Tools/Portfolio/PortfolioHome.aspx">Portfolio</a>
+            <ul class="sub-menu portfolio">
+              <li><a href="/Tools/Portfolio/PortfolioHome.aspx">Portfolio Home</a></li>
+              <li><a href="/Tools/Portfolio/Watchlist.aspx">Watchlist</a></li>
+              <li><a href="/Tools/Portfolio/Alerts.aspx">Alerts</a></li>
+            </ul>
+          </li>
+          <li><a id="Tools" class="lastNav" href="/Tools/">Tools</a>
+            <ul class="sub-menu tools">
+              <li><a href="/Tools/">Home</a></li>
+              <li><a>Fundswire<span class="icon_arrow"></span></a>
+                <ul class="child-menu">
+                  <li><a href="/Fundswire/">Fundswire Home</a></li>
+                  <li><a href="/Tools/Portfolio/Alerts.aspx">Manage my alerts</a></li>
+                </ul>
+              </li>
+              <li><a href="/Tools/Charting.aspx?typeCode=NUKX,NB:AFIA,NB:AFIB,NB:AFIC">Charting</a></li>
+              <li id="nonCFPSubMenu" class="displayNone"><a href="/Tools/FindIFA.aspx">Find an IFA</a></li>
+              <li><a href="/Tools/PensionCalculator/Default.aspx">Pension Calculator</a></li>
+              <li><a>IFA tools<span class="icon_arrow"></span></a>
+                <ul class="child-menu">
+                  <li><a href="/Tools/Tools.aspx">IFA tools home</a></li>
+                  <li><a href="/Tools/AdviserFundIndex.aspx">FE AFI</a></li>
+                  <li class="cfpSubMenu displayNone"><a href="javascript:IsUserLoggedIn('/Tools/FundProfiler/ClientFundProfiler.aspx')">Client Fund Profiler</a></li>
+                  <li class="cfpSubMenu displayNone"><a href="/investments/structured-products/">Structured Products</a></li>
+                  <li class="cfpSubMenu displayNone"><a href="/Tools/LogoUpload.aspx">Whitelabel Factsheets</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li><a id="Passive" href="/passive-funds/">Passive Funds<span class="passiveNew">New</span></a>
+            <ul class="sub-menu passivefunds">
+              <li><a href="/passive-funds/">Passive Funds Homepage</a></li>
+              <li><a>Sectors<span class="icon_arrow"></span></a>
+                <ul class="child-menu">
+                  <li><a href="/passive-funds/uk-equities.html">UK Equities</a></li>
+                  <li><a href="/passive-funds/north-american-equities.html">North American Equities</a></li>
+                  <li><a href="/passive-funds/european-equities.html">European Equities</a></li>
+                  <li><a href="/passive-funds/japanese-equities.html">Japanese Equities</a></li>
+                  <li><a href="/passive-funds/emerging-market-equities.html">Emerging Market Equities</a></li>
+                  <li><a href="/passive-funds/uk-gilts.html">UK Gilts</a></li>
+                  <li><a href="/passive-funds/property.html">Property</a></li>
+                  <li><a href="/passive-funds/sterling-corporate-bonds.html">Sterling Corporate Bonds</a></li>
+                  <li><a href="/passive-funds/index-linked-gilts.html">Index-Linked Gilts</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="cart-section">
+          <li class="notification"><a href="javascript:;" class="icon_notify js_open_readlist" title="Notification"><span class="count displayPopupCount" style="display:none;"></span></a>
+            <div class="dropbox js_readlist">
+              <span class="hightlight_arrow"></span>
+              <h2>Reading List</h2>
+              <div class="scroll-content mCustomScrollbar">
+                <ul class="sub-menu js_readlist_content">
+
+                </ul>
+              </div>
+              <a href="javascript:DeleteReadingListArticle('')" class="button">Clear all list</a>
+              <a href="javascript:;" class="icon_close js_readlist_popup_close"></a>
+            </div>
+          </li>
+          <li class="basket"><a href="javascript:viewhide('js_basket_popup','js_open_basketpoup',true);" id="js_open_basketpoup" class="icon_basket" title="Basket"><span class="count displayPopupCount">0</span></a>
+            <div id="js_basket_popup" class="dropbox">
+              <span class="hightlight_arrow js_basket_arrow"></span>
+              <div id="basketBoxTop"><h2>Your Basket</h2></div>
+              <div class="scroll-content mCustomScrollbar">
+                <ul class="sub-menu js_basket_content">
+                  <li><a href="#">Aberdeen Global Indian Equity D2 GBP</a> <a href="#" class="icon_delete"></a></li>
+
+                </ul>
+              </div>
+              <div class="basketpoup-advert" id="basket-ad">
+              </div>
+              <div id="basketBoxBot">
+                <a href="/Tools/Basket.aspx" class="button">Open basket</a>
+                <a href="javascript:;" class="icon_close js_basket_popup_close"></a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div id="FooterPortfolioDiv"></div>
+
+      <input id="boolLogin" style="visibility:hidden; display:none;" name="boolLogin" value="">
+      <input type="hidden" id="currSubmenu" name="currSubmenu" value="ulMainNavSub">
+      <input type="hidden" id="checkmailId" name="checkmailId" value="0 ">
+      <input type="hidden" id="completeWatchlistDetail" name="completeWatchlistDetail" value="">
+      <input type="hidden" id="boolCkPolicy" name="boolCkPolicy" value="">
+      <input type="hidden" id="lockErrMsg" name="lockErrMsg" value="">
+
+      <script type="text/javascript">
+        var requestActUrl = '';
+        var default2ndLevel = '';
+
+        var univType = 'O';
+
+
+        //    var investorType = GetCookie('invtype').toLowerCase();
+
+        UpdatePeerGroupwiseMenu();
+        SetNewActiveMenu();
+
+        var serverName = 'www2.trustnet.com';
+        var Mode='General';
+        var isDontShowForHK=false
+        jQuery(document).ready(function () {
+
+        });
+      </script>
+      <style type="text/css">
+        .modal {
+          display:    none;
+          position:   absolute;
+          z-index:    1000;
+          top:        0;
+          left:       0;
+          height:     100%;
+          width:      100%;
+          background: rgba( 0, 0, 0, .8 )
+          url('/images/loading.gif')
+          50% 50%
+          no-repeat;
+        }
+
+      </style>
+      <div style="left :0px; top :0px;" id="wholeCoverLogin" class="displayNone"></div>
+
+      <div id="LoginPopupPanel" class="displayNone">
+        <div class="content1 loginPannel">
+          <h4>Login</h4>
+          <label id="errLogMsg" style="" name="errLogMsg"></label>
+          <a class="but_Close" id="aLoginClose" onclick="javascript:HideLoginPopup('LoginPopupPanel');return false;"></a>
+          <div id="loginLoader" class="modal"></div>
+          <div id="LoginInfoDiv">
+            <div class="focusField">
+              <input type="text" onfocus="FocusTextField(this.id,'Username / E-mail')" onblur="CheckTextField(this.id,'Username / E-mail')" value="" id="EmailAddress" class="loginfield" name="EmailAddress" onkeypress="javascript:return checkTNNEWkey(event)">
+              <select id="selMulUserName" name="selMulUserName" class="loginfield displayNone" onfocus="javascript:FocusSelectField(this.id)" onblur="javascript:CheckSelectField(this.id,'0')" onchange="javascript:GetSelectedUserName(this.id)">
+                <option value="0" selected="selected">Select Account..</option>
+              </select>
+              <input type="password" onfocus="FocusTextField(this.id,'password')" onblur="CheckTextField(this.id,'password')" value="" id="userPwd" class="loginfield" name="userPwd" onkeypress="javascript:return checkTNNEWkey(event)">
+            </div>
+            <div class="spaceBottom_margin" id="login-footer">
+              <a style="" class="go alignLeft" onclick="javascript:CheckTNLogin();return false;">Login</a>
+              <div style="float:right"><input type="checkbox" name="remember" id="remember" value="on"> <label for="remember">Remember Me</label></div>
+            </div>
+            <div class="fLeft"><a href="/Tools/Portfolio/ForgotPassword.aspx">Password Reminder</a></div>
+            <div class="fRight"><a onclick="javascript:ShowLogRegPopup();return false">Not Registered? Click Here</a></div>
+            <div class="clear"></div>
+          </div>
+        </div>
+      </div>
+      <input type="hidden" name="linkedRefUrl" id="linkedRefUrl" value="">
+      <div id="LoginRegPopupPanel" class="displayNone">
+
+        <div class="content1 loginPannel">
+          <h4>Register</h4>
+          <label id="errRegMsg" style="" name="errRegMsg"></label>
+          <a class="but_Close" id="aLoginRegClose" onclick="javascript:HideLoginPopup('LoginRegPopupPanel');return false;"></a>
+          <div id="regLoader" class="modal"></div>
+          <div class="focusField">
+            <input type="text" onfocus="javascript:FocusTextField(this.id,'First Name')" onblur="javascript:CheckTextField(this.id,'First Name')" value="First Name" id="txtFName" maxlength="100" class="loginfield" name="txtFName">
+            <label for="txtFName" class="red displayNone">*</label>
+            <input type="text" onfocus="javascript:FocusTextField(this.id,'Surname')" onblur="javascript:CheckTextField(this.id,'Surname')" value="Surname" id="txtSName" maxlength="100" class="loginfield" name="txtSName">
+            <label for="txtSName" class="red displayNone">*</label>
+            <input type="text" onfocus="javascript:FocusTextField(this.id,'E-mail')" onblur="javascript:CheckTextField(this.id,'E-mail')" value="E-mail" id="txtUName" maxlength="50" class="loginfield" name="txtUName">
+            <label for="txtUName" class="red displayNone">*</label>
+            <input type="text" onfocus="javascript:FocusTextField(this.id,'Alias(used in forums)')" onblur="javascript:CheckTextField(this.id,'Alias(used in forums)')" value="Alias(used in forums)" id="txtAName" maxlength="100" class="loginfield" name="txtAName">
+            <input type="text" onfocus="javascript:FocusPassField('txtUPass',this.id,'Password')" value="Password" id="txtUPassHide" maxlength="20" class="loginfield" name="txtUPassHide">
+            <input type="password" onblur="javascript:CheckPassField(this.id,'txtUPassHide','Password')" value="" id="txtUPass" maxlength="20" class="loginfield displayNone" name="txtUPass">
+            <label for="txtUPass" class="red displayNone">*</label>
+            <input type="text" onfocus="javascript:FocusPassField('txtUCPass',this.id,'Confirm Password')" value="Confirm Password" id="txtUCPassHide" maxlength="20" class="loginfield" name="txtUCPassHide">
+            <input type="password" onblur="javascript:CheckPassField(this.id,'txtUCPassHide','Confirm Password')" value="" id="txtUCPass" maxlength="20" class="loginfield displayNone" name="txtUCPass">
+            <label for="txtUCPass" class="red displayNone">*</label>
+            <select class="loginfield" name="selURCType" id="selURCType" onfocus="javascript:FocusSelectField(this.id)" onblur="javascript:CheckSelectField(this.id,'')">
+              <option selected="selected" value="">Choose a User Type</option>
+              <option value="Adviser">I am a financial adviser</option>
+              <option value="Discretionary">I am a discretionary fund manager / multimanager</option>
+              <option value="Paraplanner">I am a financial paraplanner</option>
+              <option value="MarketPro">I work in financial services</option>
+              <option value="Investor">I am a private investor</option>
+            </select>
+            <label for="selURCType" class="red displayNone">*</label>
+            <label class="checkBox"><input type="checkbox" value="true" name="chkURAccept" id="chkURAccept"> <a href="/Education/TermsOfUse.aspx" target="_blank">I accept your terms of use</a></label>
+            <label class="checkBox"><input type="checkbox" checked="checked" value="true" name="chkURFEBulletins" id="chkURFEBulletins"> Send me FE Trustnet bulletins</label>
+            <div class="alignCenter"><a class="go" id="regUser" onclick="javascript:CheckTNUserRegDetails();">Register</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="BrowserClosePopupPanel" class="displayNone">
+        <div class="content1 loginPannel">
+          <span class="titleHead">It's look like you're leaving us</span>
+          <p>
+            What would you like us to do with the funds you've selected
+          </p>
+          <a onclick="javascript:SaveBasketCookie('Show');return false;">Show me all my options
+          </a><a onclick="javascript:SaveBasketCookie('Forget');return false;">Forget them
+        </a><a onclick="javascript:SaveBasketCookie('Save');return false;">Save them </a>
+          <label>
+            Remember my choice<input type="checkbox" value="true" id="chkCloseRem" name="chkCloseRem"></label>
+        </div>
+      </div>
+      <div id="customiziedPopup" class="displayNone">
+        <div class="pagination-popup">
+          <div class="floatRight">
+            <a id="but_CloseCustom" class="but_CloseCustom" onclick="CloseNewPopup();"></a>
+          </div>
+        </div>
+        <div class="clear">
+        </div>
+        <h5>
+          Customise this table</h5>
+        <iframe id="framePopupFilter" style="width: 600px; height: 410px; border: none;">
+        </iframe>
+      </div>
+
+      <script language="javascript" type="text/javascript">
+        LoadTNNewMenu();
+        invTypeInit(GetCookie('invtype'));
+
+        jQuery(document).ready(function () {
+
+          loadReadingListBasket();
+        });
+      </script>
+
+      <div class="wrapper">
+        <div id="main">
+          <!-- Main page -->
+
+
+          <div id="EqtyDivSearch">
+            <!-- Group Search --->
+
+
+
+            <div class="searchRow">
+
+
+              <div class="groupSearch" style="">
+                <div class="option">
+                  <ul class="searchTabs">
+
+                    <li><a id="companyFlag" class="selected" href="javascript:toggleTab('epicFlag,sedolFlag','','companyFlag','selected');RetainFlagValue('companyFlag');">Company</a></li>
+                    <li><a id="epicFlag" class="" href="javascript:toggleTab('companyFlag,sedolFlag','','epicFlag','selected');RetainFlagValue('epicFlag');">EPIC/TIDM</a></li>
+                    <li><a id="sedolFlag" class="" href="javascript:toggleTab('companyFlag,epicFlag','','sedolFlag','selected');RetainFlagValue('sedolFlag');">SEDOL/ISIN</a></li>
+
+                  </ul>
+
+
+                  <ul class="searchInput">
+                    <li class="searchTxt" style="">
+                      <label>
+                        <input name="searchField" type="text" id="searchField" style="" value="Search for an equity factsheet" onfocus="javascript:SearchTextColor('search','focus',this.id);" onblur="javascript:SearchTextColor('search','blur',this.id);">
+                      </label>
+                    </li>
+                    <li><a href="javascript:ChangeSearchLink();" class="go"></a></li>
+                  </ul>
+                </div>
+
+                <div class="clear notie6"></div>
+                <script type="text/javascript">
+                  var searchboxChanged='';
+                  document.onkeypress = checkCR; // attach the function to the onkeypress event
+                  SearchTextColor('search','blur','searchField');
+                </script>
+              </div>
+
+
+              <!-- <ul class="quickLinksTop">
+               <li class="heading">quick links</li>
+               <li><a href="/Investments/EquityPerfList.aspx">Equity prices and performance</a></li>
+               <li><a href="/Investments/EquityList.aspx">A-Z Equity Factsheets</a></li>
+               <li><a href="/Investments/LatestAnnouncements.aspx">Latest Equity announcements</a></li>
+               </ul>-->
+              <div class="advert-in-Search" style="text-align:center; float :none; display :none;">
+                <img src="/images/ad-in-search.png" width="425" height="61">
+
+              </div>
+              <input type="hidden" id="hdnSearchFlag" name="hdnSearchFlag" value="companyFlag">
+
+            </div>
+
+            <!-- End of Group Search -->
+
+            <div class="clearfix"></div>
+          </div>
+
+          <div id="FW">
+            <div id="mainBlock">
+              <div id="content">
+                <div class="articleRow" style="width:100%;">
+
+
+                  <style type="text/css">
+                    #ArticleContent p.da,.articleRow H3,.articleRow .flLeft H2,.articleRow .flLeft H1,.articleRow H5
+                    {
+                      text-indent : 0pt;
+                    }
+
+                  </style>
+
+                  <div class="">
+
+                    <div style="margin-bottom:10px;">
+                      <table border="0" cellpadding="0" cellspacing="0">
+                        <tbody><tr>
+                          <td style="width:90px;">
+                            <a name="fb_share" type="button_count" href="https://www.facebook.com/sharer.php">Share</a><script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
+                          </td>
+                          <td style="width:60px;padding-top:4px;">
+                            <a href="https://twitter.com/share" rel="me" class="twitter-share-button" data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js" async="" defer=""></script>
+                          </td>
+                          <td style="width:100px;">
+                            <a title="Post to Google Buzz" rel="me" class="google-buzz-button" href="https://www.google.com/buzz/post" data-button-style="small-count" data-locale="en_IN"></a>
+                            <script type="text/javascript" src="https://www.google.com/buzz/api/button.js" async="" defer=""></script>
+                          </td>
+                          <td style="text-align:right;">
+                            <img src="/Icons/print_Icon.gif" alt="" style="vertical-align:baseline;">&nbsp;
+                            <a target="_blank" href="/Investments/ArticlePrint.aspx?id=201801031527288873A">Print</a>&nbsp;&nbsp;&nbsp;
+                            <img src="/Icons/rss_icon.jpg" alt="" style="vertical-align:baseline;">&nbsp;
+                            <a target="_blank" href="/Tools/RSS/EquityRSS.aspx?company=IRSH" class="rss">RSS</a>
+
+
+                          </td>
+                        </tr>
+                        </tbody></table>
+                    </div>
+                    <div class="flLeft">
+                      <h1>Juno(Eclipse 2007-2) (IRSH)</h1>
+                    </div>
+
+                  </div>
+                  <div class="clearfix"></div>
+
+                  <h3>Juno(Eclipse 2007-2)</h3>
+                  <div class="clearfix"></div>
+                  <h5>Company Announcement</h5>
+                  <div id="ArticleContent"><style type="text/css">
+                    /*<![CDATA[*/
+
+                    /**/
+                    SUP {
+                      FONT-SIZE: 80%
+                    }
+                    H1 {
+                      TEXT-ALIGN: justify; MARGIN: 0cm 0cm 12pt; FONT-FAMILY: "Times New Roman","serif"; FONT-SIZE: 10pt; FONT-WEIGHT: normal
+                    }
+                    H2 {
+                      TEXT-ALIGN: justify; MARGIN: 0cm 0cm 12pt; FONT-FAMILY: "Times New Roman","serif"; FONT-SIZE: 10pt; FONT-WEIGHT: normal
+                    }
+                    H3 {
+                      TEXT-ALIGN: justify; MARGIN: 0cm 0cm 12pt; FONT-FAMILY: "Times New Roman","serif"; FONT-SIZE: 10pt; FONT-WEIGHT: normal
+                    }
+                    H4 {
+                      TEXT-ALIGN: justify; MARGIN: 0cm 0cm 12pt; FONT-FAMILY: "Times New Roman","serif"; FONT-SIZE: 10pt; FONT-WEIGHT: normal
+                    }
+                    H5 {
+                      TEXT-ALIGN: justify; MARGIN: 0cm 0cm 12pt; FONT-FAMILY: "Times New Roman","serif"; FONT-SIZE: 10pt; FONT-WEIGHT: normal
+                    }
+                    H6 {
+                      TEXT-ALIGN: justify; MARGIN: 0cm 0cm 12pt; FONT-FAMILY: "Times New Roman","serif"; FONT-SIZE: 10pt; FONT-WEIGHT: normal
+                    }
+                    STRONG {
+                      FONT-FAMILY: "Times New Roman","serif"
+                    }
+                    EM {
+                      FONT-FAMILY: "Times New Roman","serif"
+                    }
+                    OL {
+                      MARGIN-BOTTOM: 0cm
+                    }
+                    UL {
+                      MARGIN-BOTTOM: 0cm
+                    }
+                    .ba {
+                      MARGIN: 72pt; size: 21.0cm 841.95pt
+                    }
+                    DIV.ba {
+
+                    }
+                    P.bq {
+                      TEXT-ALIGN: center; MARGIN: 0cm 0cm 12pt; LAYOUT-GRID-MODE: char; FONT-FAMILY: "Times New Roman","serif"; TEXT-AUTOSPACE: ; FONT-SIZE: 12pt; FONT-WEIGHT: bold
+                    }
+                    SPAN.bo {
+                      COLOR: black
+                    }
+                    P.br {
+                      TEXT-ALIGN: justify; MARGIN: 0cm 0cm 12pt; LAYOUT-GRID-MODE: char; FONT-FAMILY: "Times New Roman","serif"; TEXT-AUTOSPACE: ; FONT-SIZE: 12pt; FONT-WEIGHT: bold
+                    }
+                    P.bs {
+                      TEXT-ALIGN: left; MARGIN: 0cm 0cm 12pt; FONT-FAMILY: "Times New Roman","serif"; TEXT-AUTOSPACE: ; FONT-SIZE: 12pt
+                    }
+                    P.bt {
+                      TEXT-ALIGN: center; MARGIN: 13.2pt 0cm; FONT-FAMILY: "Times New Roman","serif"; FONT-SIZE: 12pt; FONT-WEIGHT: bold
+                    }
+                    P.bu {
+                      TEXT-ALIGN: center; MARGIN: 0cm; FONT-FAMILY: "Times New Roman","serif"; FONT-SIZE: 12pt; FONT-WEIGHT: bold
+                    }
+                    P.bv {
+                      TEXT-ALIGN: center; MARGIN: 13.2pt 0cm; FONT-FAMILY: "Times New Roman","serif"; FONT-SIZE: 12pt
+                    }
+                    P.a {
+                      TEXT-ALIGN: justify; MARGIN: 0cm 0cm 12pt; FONT-FAMILY: "Times New Roman","serif"; FONT-SIZE: 12pt
+                    }
+                    LI.a {
+                      TEXT-ALIGN: justify; MARGIN: 0cm 0cm 12pt; FONT-FAMILY: "Times New Roman","serif"; FONT-SIZE: 12pt
+                    }
+                    DIV.a {
+                      TEXT-ALIGN: justify; MARGIN: 0cm 0cm 12pt; FONT-FAMILY: "Times New Roman","serif"; FONT-SIZE: 12pt
+                    }
+                    P.bw {
+                      TEXT-ALIGN: justify; MARGIN: 13.2pt 0cm; FONT-FAMILY: "Times New Roman","serif"; FONT-SIZE: 12pt
+                    }
+                    P.bx {
+                      TEXT-ALIGN: justify; PAGE-BREAK-AFTER: avoid; MARGIN: 13.2pt 0cm; FONT-FAMILY: "Times New Roman","serif"; FONT-SIZE: 12pt; FONT-WEIGHT: bold
+                    }
+                    P.by {
+                      TEXT-ALIGN: justify; FONT-STYLE: italic; MARGIN: 0cm 0cm 12pt; FONT-FAMILY: "Times New Roman","serif"; FONT-SIZE: 12pt
+                    }
+                    P.bz {
+                      TEXT-ALIGN: justify; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: "Times New Roman","serif"; FONT-SIZE: 11pt
+                    }
+                    SPAN.be {
+                      FONT-SIZE: 12pt
+                    }
+                    SPAN.bd {
+                      FONT-SIZE: 12pt
+                    }
+                    P.ca {
+                      TEXT-ALIGN: left; MARGIN: 0cm 0cm 12pt; FONT-FAMILY: "Times New Roman","serif"; FONT-SIZE: 12pt
+                    }
+                    /**/
+                    /*]]>*/
+                  </style>
+                    <div>RNS Number : 8873A</div>  <div>Juno (Eclipse 2007-2) DAC</div>  <div>03 January 2018</div>  <div>&nbsp;</div>
+                    <div class="ba">
+                      <p class="bq"><span class="bo">RIS NOTIFICATION</span></p>
+                      <p class="br"><span class="bo">&nbsp;</span></p>
+                      <p class="bs"><span class="bo">To: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The Irish Stock Exchange<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 28 Anglesea Street<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dublin 2<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ireland</span></p>
+                      <p class="bs"><span class="bo">Date:&nbsp;&nbsp;&nbsp; 3<sup>rd</sup> </span>January <span class="bo">2018</span></p>
+                      <p class="bt">COMPANY ANNOUNCEMENT</p>
+                      <p class="bu">In relation to JUNO (ECLIPSE 2007-2) DAC (the "Issuer")</p>
+                      <p class="bu">&nbsp;</p>
+                      <p class="bu">€677,250,000 Class A Floating Rate Notes due November 2022</p>
+                      <p class="bu">(ISIN (Reg S): XS0299976323; ISIN (Rule 144A): XS0302319370)</p>
+                      <p class="bu">&nbsp;</p>
+                      <p class="bu">€69,150,000 Class B Floating Rate Notes due November 2022</p>
+                      <p class="bu">(ISIN (Reg S): XS0299976752; ISIN (Rule 144A): XS0302320386)</p>
+                      <p class="bu">&nbsp;</p>
+                      <p class="bu">€74,300,000 Class C Floating Rate Notes due November 2022</p>
+                      <p class="bu">(ISIN (Reg S): XS0299976836; ISIN (Rule 144A): XS0302320543)</p>
+                      <p class="bu">&nbsp;</p>
+                      <p class="bu">€600,000 Class X Floating Rate Notes due November 2022</p>
+                      <p class="bu">(ISIN (Reg S): XS0299976596; ISIN (Rule 144A): XS0302319610)</p>
+                      <p class="bv">being together, the "<span style="FONT-WEIGHT: bold">Notes</span>"</p>
+                      <p class="a">The Notes are admitted to the Official List of the Irish Stock Exchange plc and to trading on its regulated market.</p>
+                      <p class="a">The Market Abuse Regulation (Regulation (EU) No. 596/2014) requires disclosure by or on behalf of the Issuer of any insider information concerning the Notes.</p>
+                      <p class="bw">Terms used in this notice but not defined herein shall have the meanings given to such terms in the Prospectus in relation to the Notes dated 25 May 2007.</p>
+                      <p class="bw">This notice has been prepared by and issued at the request of the Sub Special Servicer.&nbsp; The Trustee has not independently verified the information contained in this notice.&nbsp; Accordingly, the Issuer hereby gives notice that the Sub Special Servicer has informed the Issuer of the following in relation to the Obelisco Reference Obligation: &nbsp;&nbsp;</p>
+                      <p class="bx">Obelisco Reference Obligation:&nbsp; proposed sale of an Obelisco Portfolio Property</p>
+                      <p class="by">Property Disposal</p>
+                      <p class="a">Blockchain Bitcoin. As notified in the notice issued on the Irish Stock Exchange on 20<sup>th</sup> December 2017, the Sub Special Servicer has consented to the disposal of the Obelisco Portfolio Property located at Via Richard Tour C3 &amp; E5 (Milan) for an aggregate gross sale price of €14,500,000 (the "<span style="FONT-WEIGHT: bold">Disposal Proceeds</span>") which sale price is above the release price set out in the Obelisco Credit Agreement (as amended on 31 December 2015, such amendment as described in the stock exchange notice issued on 14 January 2016) (the "<span style="FONT-WEIGHT: bold">Property Disposal</span>").&nbsp; &nbsp;The Property Disposal was completed on 28<sup>th</sup> December 2017 and the mortgage relating to such Property has been released.</p>
+                      <p class="a">In addition to the Disposal Proceeds, an amount of €300,000 (available to the Obelisco Reference Entity) has been applied by the Sub Special Servicer towards repayment of the outstanding principal amount of the loan pursuant to the Obelisco Credit Agreement as at the Reference Obligation Interest Payment Date falling in December 2017.&nbsp;</p>
+                      <p class="by">Standstill</p>
+                      <p class="bz"><span class="be">As notified in the notice issued on the Irish Stock Exchange on 7</span><sup>th</sup><span class="be"> July 2017, the Sub Special Servicer entered into a standstill agreement with respect to the non-payment event of default (as described in the notice issued on 1</span><sup>st</sup><span class="bd"> March 2017) for a period ending on 31</span><sup>st</sup><span class="be"> December 2017 (the "<span style="FONT-WEIGHT: bold">Original Standstill Period</span>").&nbsp; </span></p>
+                      <p class="bz"><span class="be">&nbsp;</span></p>
+                      <p class="bz"><span class="be">In order to allow further time to facilitate the ongoing discussions with the Obelisco Reference Entity to agree workout strategy for the remaining Obelisco Portfolio Properties, including to consider a request from the Obelisco Reference Entity to extend the maturity date of the loan to 31</span><sup>st</sup><span class="be"> December 2018, the Sub Special Servicer has entered into a further standstill agreement to extend the Original Standstill Period to 31<sup>st</sup> January 2018 (the "<span style="FONT-WEIGHT: bold">Standstill Period</span>") and waive the LTV breach for the duration of the Standstill Period.</span></p>
+                      <p class="a">&nbsp;</p>
+                      <p class="a">Enquiries to:</p>
+                      <p class="ca">Intertrust Finance Management (Ireland) Limited<br>
+                        &nbsp;</p>
+                      <p class="ca">1st Floor<br>
+                        1-2 Victoria Buildings<br>
+                        Haddington Road<br>
+                        Dublin 4<br>
+                        Ireland</p>
+                      <p class="ca">+ 353 1 697 5350</p>
+                      <p class="ca">As Company Secretary for<br>
+                        <span style="FONT-WEIGHT: bold">JUNO (ECLIPSE 2007-2) DAC</span></p>
+                      <p class="ca">&nbsp;</p>
+                      <p style="TEXT-ALIGN: center; MARGIN: 0cm 0cm 11pt; tab-stops: 10.0cm"><span style="FONT-FAMILY: 'Arial',sans-serif; FONT-SIZE: 10pt; mso-ansi-language: EN-IE; mso-fareast-language: EN-IE">This announcement has been issued through the Companies Announcement Service of</span></p>
+                      <p style="TEXT-ALIGN: center; MARGIN: 11pt 0cm; tab-stops: 10.0cm"><span style="FONT-FAMILY: 'Arial',sans-serif; FONT-SIZE: 10pt; mso-ansi-language: EN-IE; mso-fareast-language: EN-IE">the Irish Stock Exchange<em>.</em></span></p>
+                    </div>
+                    <div style="text-align:center;"><br>This information is provided by RNS</div><div style="text-align:center;">The company news service from the London Stock Exchange</div><div>&nbsp;</div>  END<div>&nbsp;</div><div>&nbsp;</div>ISEBJMATMBTMBFP</div>
+
+                  <div class="clear"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+
+          <div class="EqtyDiv">
+
+            <!-- footer nav starts-->
+
+
+            <div id="EqtyDivFooter">
+              <div class="footerNav">
+                <ul class="quickLinks">
+                  <li class="heading">quick links</li>
+                  <li><a href="/equities">Equity Home</a></li>
+                  <li><a href="/share-prices-and-performance-list-equities">Equity Prices and Performance</a></li>
+                  <li><a href="/Investments/LatestAnnouncements.aspx">Latest announcements</a></li>
+                </ul>
+                <ul class="quickLinks">
+                  <li class="heading">our product portfolio</li>
+                  <li><a href="https://www.trustnet.com">www.trustnet.com</a></li>
+                  <li><a href="http://www.trustnetoffshore.com">www.trustnetoffshore.com</a></li>
+                  <li><a href="http://www.trustnetmiddleeast.com">www.trustnetmiddleeast.com</a></li>
+                </ul>
+                <ul class="quickLinks">
+                  <li>&nbsp;</li>
+                  <li><a href="http://www.investegate.co.uk">www.investegate.co.uk</a></li>
+                  <li><a href="http://www.fundlistings.com">www.fundlistings.com</a></li>
+                  <li><a href="http://www.feanalytics.com">FE Analytics</a></li>
+                </ul>
+                <ul class="quickLinks">
+                  <li>&nbsp;</li>
+                  <li><a href="http://www.financialexpress.net/uk/datafeeds/index.htm">Data feeds</a></li>
+                  <li><a href="http://www.financialexpress.net/uk/products/flp.htm">Factsheet and literature Production</a></li>
+                  <li><a href="http://www.financialexpress.net/uk/products/webtools.htm">Webtools</a></li>
+                </ul>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+
+            <!-- footer nav ends-->
+          </div>
+
+
+
+
+        </div>
+      </div>
+
+      <input type="hidden" id="logeduserName" name="logeduserName" value="">
+
+
+      <div style="margin-left:10px">
+        Data provided by FE. Care has been taken to ensure that the information is correct, but FE neither warrants, represents nor guarantees the contents of information, nor does it accept any responsibility for errors, inaccuracies, omissions or any inconsistencies herein. Past performance does not predict future performance, it should not be the main or sole reason for making an investment decision. The value of investments and any income from them can fall as well as rise.
+      </div>
+      <div class="footer-content">
+
+        <ul class="utility-navi" id="LoginFooter">
+          <li id="FtrLogin"><a class="icon_login" onclick="javascript:ShowLoginPopup('LoginPopupPanel')"><span class="icon_login"></span>Login</a></li>
+          <li id="Help"><a class="icon_help" href="/Help/Help.aspx"><span class="icon_help"></span>Help</a></li>
+          <li><a class="icon_contact" href="/Help/ContactUs.aspx"><span class="icon_contact"></span>Contact Us</a></li>
+        </ul>
+        <div class="utility-content">
+          <div class="top-search row-wrap">
+            <input class="search-fld" type="text" onblur="CheckTextField(this.id,'Search FE Trustnet')" onfocus="FocusTextField(this.id,'Search FE Trustnet')" value="Search FE Trustnet" maxlength="256" onkeyup="javascript:FESearchKeyUp(event, this.id);" id="txtFooterKeyword" name="txtFooterSearch">
+            <button class="search-btn" type="button" onclick="javascript:FESearch('txtFooterKeyword');return false;"></button>
+          </div>
+        </div>
+
+
+        <div class="row-wrap" id="divFooterBottom">
+
+          <ul class="cols">
+            <li><h5>For Equity investors</h5></li>
+            <li><a class="js_hits" href="http://www.investegate.co.uk/" target="_blank">FE Investegate</a></li>
+            <li><h5>For Professional investors</h5></li>
+            <li><a class="js_hits" href="http://www.feinvest.net/" target="_blank">FE Invest</a></li>
+            <li><a class="js_hits" href="http://www.feanalytics.com/" target="_blank">FE Analytics</a></li>
+            <li><a class="js_hits" href="http://www.financialexpress.net/uk/datafeeds/index.htm" target="_blank">FE Data feeds</a></li>
+            <li><a class="js_hits" href="http://www.fundlistings.com/" target="_blank">FE Fund listings</a></li>
+            <li><h5>For International investors</h5></li>
+            <li><a class="js_hits" href="http://www.trustnet.hk/" target="_blank">FE Trustnet Hong Kong</a></li>
+            <li><a class="js_hits" href="http://www.trustnetoffshore.com/" target="_blank">FE Trustnet Offshore</a></li>
+            <li><a class="js_hits" href="http://www.trustnetmiddleeast.com/" target="_blank">FE Trustnet Middle East</a></li>
+          </ul>
+          <ul class="cols cols-small">
+            <li><h5>Quick links</h5></li>
+            <li><a href="/trustnet-magazine">Trustnet-Magazine</a></li>
+            <li><a href="/News/">Investment research</a></li>
+            <li><a href="/news/videosarchive.aspx">FE Trustnet videos</a></li>
+            <li><a href="/ratings/">Top rated funds</a></li>
+            <li><a href="/Investments/Perf.aspx?univ=O">Top performing funds</a></li>
+            <li><a href="/Tools/Search.aspx">Find a fund</a></li>
+            <li><a href="/Tools/Portfolio/PortfolioHome.aspx">Build a portfolio</a></li>
+            <li><a href="/Managers/">The UK’s best fund managers</a></li>
+            <li><a href="/Tools/Charting.aspx?typeCode=NUKX,NB:AFIA,NB:AFIB,NB:AFIC">Performance charting</a></li>
+            <li><a href="/Help/Help.aspx">About us</a></li>
+          </ul>
+          <ul class="cols cols-small">
+            <li><h5>Fund performance</h5></li>
+            <li><a href="/Investments/Perf.aspx?univ=O">IA unit trusts &amp; OEICs</a></li>
+            <li><a href="/share-prices-and-performance-list-equities">Equities</a></li>
+            <li><a href="/investment-trusts/price-performance?univ=T">Investment trusts</a></li>
+            <li><a href="/pension-funds/price-performance?univ=P">Pension funds</a></li>
+            <li><a href="/life-funds/price-performance?univ=N">Life funds</a></li>
+            <li><a href="/offshore-funds/price-performance?univ=B">Offshore funds</a></li>
+            <li><a href="/exchange-traded-funds/price-performance?univ=E">ETFs</a></li>
+            <li><a href="/venture-capital-trusts/price-performance?univ=VCT">Venture capital trusts</a></li>
+          </ul>
+          <div class="cols last">
+            <h5>Stay connected with FE Trustnet</h5>
+            <ul class="social_icons row-wrap">
+              <li><a rel="me" class="icon_twitter js_hits" title="Twitter" href="https://twitter.com/FEtrustnet" target="_blank"></a></li>
+              <li><a rel="me" class="icon_youtube js_hits" title="Youtube" href="https://www.youtube.com/TrustnetUK" target="_blank"></a></li>
+              <li><a rel="me" class="icon_rss js_hits" title="RSS" href="http://feeds.trustnet.com/trustnet" target="_blank"></a></li>
+              <li><a rel="me" class="icon_linkedin js_hits" title="Linkedin" href="https://www.linkedin.com/company/trustnet-uk" target="_blank"></a></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="FooterMailDiv">
+      </div>
+      <div id="FooterTZCDiv">
+      </div>
+      <div id="FooterCalDiv">
+      </div>
+      <div id="FooterBasketDiv">
+      </div>
+      <div id="FooterRiskChartContentDiv">
+      </div>
+      <div class="popup_articlebox fundwire_announcement">
+        <div class="popup_content">
+          <h2 class="title_txt">LATEST :</h2>
+          <h3 class="news_title"><a href="#">Five reasons to keep hold of your defensive funds</a></h3>
+          <p class="posted_date">13:00 | Monday, January 20, 2014</p>
+          <p class="posted_by"><img src="/images/article/advert_img.png" width="234" height="60" alt="" title=""></p>
+          <a href="#" class="close_popup"><img src="/images/article/icon_close.png" title="Close" alt="Close"></a>
+        </div>
+      </div>
+      <div class="IEbrowser_warning">
+        <div class="inner_content">
+          <p class="no_mrgn">You are currently using an old browser which will not be supported by Trustnet after 31/07/2016.  To ensure you benefit from all features on the site, please update your browser.&nbsp;&nbsp;&nbsp;<a href="javascript:jQuery('.IEbrowser_warning').hide();void(0);">Close <span class="ico_close"></span></a></p>
+        </div>
+      </div>
+      <!--[if lte IE 7 ]>
+      <style type="text/css">
+        .IEbrowser_warning { display:block }
+      </style>
+      <![endif]-->
+
+      <script type="text/javascript">
+
+        if (LogDBServerExecTime == "")
+          LogDBServerExecTime = 0;
+        if (FNewsDBServerExecTime == "")
+          FNewsDBServerExecTime = 0;
+
+        LogDBServerExecTime = parseInt(LogDBServerExecTime) + parseInt(FNewsDBServerExecTime);
+
+        var qryParams = 'fut=https%3a%2f%2fwww2.trustnet.com%2fInvestments%2fTNUK%2fArticle.aspx%3fid%3d201801031527288873A&c=GBP&rut=https%3a%2f%2fwww2.trustnet.com%2fInvestments%2fLatestAnnouncements.aspx&bw=' + screen.width + '&bh=' + screen.height + '&bt=' + navigator.appName + '&bc=' + screen.colorDepth + '&uid=&pl=' + userLanguage + "&u=&f=&s=&m=&t=&ai=&as=&cu=&rc=&rf=&se=63&dbse=" + LogDBServerExecTime + "&pc=&uty=" + invType;
+        var convertQParam = encodeURIComponent(qryParams);
+        if (convertQParam != null && convertQParam != '') {
+          jQuery.ajax
+          ({
+            type: "GET",
+            url: "/Webservices/BusinessObjLoader.asmx/TNLogPageHit",
+            data: "pageHitLogInfo=" + convertQParam,
+            contentType: "application/x-www-form-urlencoded; charset=utf-8",
+            async: true,
+            error: function (xhr, status, error) {
+              console.log(xhr.responseText);
+            }
+          });
+        }
+        var UserUniverse = 'O';
+        NewFooterInit();
+      </script>
+
+
+    </div>
+
+    <div id="FW">
+      <div id="fedInstrumentsDivTopNew">
+        <div id="fedInstrumentsDivNew">
+        </div>
+      </div>
+    </div>
+
+    <div id="newPopup" class="cover" style="top:0px;left:0px;display:none;"></div>
+    <div id="divPopupInfo"></div>
+
+    <div class="add-banner" id="TopRight">
+      <div id="gpt-trustnet-topright" class="noPrint"></div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer-logo">
+        <a href="http://www.financialexpress.net"></a>
+      </div>
+      <div class="copyright">
+        <p>
+          © Trustnet Limited 2018. All Rights Reserved.<br>
+          Please read our <a href="/Education/TermsOfUse.aspx" onclick="javascript:GATrack('Terms of Use / Disclaimer');">Terms of Use / Disclaimer</a> and <a onclick="javascript:GATrack('Privacy and Cookie Policy');" href="/Education/PrivacyPolicy.aspx">Privacy and
+          Cookie Policy</a>.<br>
+          Data supplied in conjunction with Thomson Financial Limited, London Stock Exchange
+          Plc, StructuredRetailProducts.com and ManorPark.com</p>
+      </div>
+    </div>
+
+    <input type="hidden" id="scrollLeft" name="scrollLeft" value=""><input type="hidden" id="scrollTop" name="scrollTop" value=""></form>
+
+
+
+  <script type="text/javascript">
+
+    InitFundswireMaster();
+    LoadLoginSession();
+
+    if (DisplayDFP) {
+      DisplayDFP();
+    }
+
+  </script>
+
+
+</div>
+<script type="text/javascript" src="../../js/angular.min.1.2.9.js"></script>
+
+<script type="text/javascript" src="/v18.9.6571.21151/Angular__NGCommon/js/ResourceHandler.axd"></script>
+
+
+
+
+</body></html>

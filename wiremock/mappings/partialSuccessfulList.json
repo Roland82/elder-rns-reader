@@ -1,0 +1,18 @@
+{
+  "request" : {
+    "urlPath" : "/Investments/LatestAnnouncements.aspx",
+    "method" : "GET",
+    "queryParameters" : {
+      "date" : {
+        "equalTo" : "20000101"
+      },
+      "limit": {
+        "equalTo" : "-1"
+      }
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName": "partialSuccessfullist.html"
+  }
+}

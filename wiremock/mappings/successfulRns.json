@@ -1,0 +1,15 @@
+{
+  "request" : {
+    "urlPath" : "/Investments/Article.aspx",
+    "method" : "GET",
+    "queryParameters" : {
+      "id" : {
+        "equalTo" : "successful"
+      }
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName": "successfulRns.html"
+  }
+}

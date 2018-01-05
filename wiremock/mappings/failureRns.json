@@ -1,0 +1,15 @@
+{
+  "request" : {
+    "urlPath" : "/Investments/Article.aspx",
+    "method" : "GET",
+    "queryParameters" : {
+      "id" : {
+        "equalTo" : "failure"
+      }
+    }
+  },
+  "response" : {
+    "status" : 500,
+    "fixedDelayMilliseconds": 11000
+  }
+}
