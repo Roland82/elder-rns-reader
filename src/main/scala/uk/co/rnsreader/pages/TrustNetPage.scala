@@ -1,32 +1,36 @@
 package uk.co.rnsreader.pages
 
-import dispatch.{Future, Http, as, url}
-import org.asynchttpclient.Response
-import org.joda.time.DateTime
-import org.jsoup.Jsoup.parse
-import org.jsoup.nodes.Element
+import dispatch.Future
+import org.jsoup.nodes.{Document, Element}
 
 import scala.collection.JavaConverters._
-import scala.concurrent.Await
-import scala.concurrent.duration.Duration
-import scalaz.{-\/, Maybe, \/, \/-}
+import scalaz.{Kleisli, ReaderT, Maybe, \/}
 import scalaz.Maybe.{Just, empty}
-import scala.concurrent.ExecutionContext.Implicits.global
+import scalaz.Kleisli._
 
 object TrustNetPage {
-  def getRnsList(baseUrl: String, d: DateTime): List[Rns] = {
-    val date = d.toString("yyyMMdd")
-    val startUrl = s"$baseUrl/Investments/LatestAnnouncements.aspx?date=$date&pno=1&limit=-1"
-    val svc = url(startUrl)
-    val body = Http.default(svc OK as.String).map(parse)
+  def parseRnsLists(e: String \/ Document): Future[String \/ List[Rns]] = {
 
-    val document = Await.result(body, Duration(10000, concurrent.duration.MILLISECONDS))
+      Future.successful(
+        e.map(_.select("#announcementList tr")
+        .asScala
+        .toList
+        .filter(_.select("a.annmt").size > 0)
+        .map(e => Rns.fromJsoupElement(e))))
+  }
 
-    document.select("#announcementList tr")
-      .asScala
-      .toList
-      .filter(_.select("a.annmt").size > 0)
-      .map(e => Rns.fromJsoupElement(e, baseUrl))
+  def parseRnsList(e: String \/ Document): String \/ List[Rns] = {
+    e.map {
+      _.select("#announcementList tr")
+        .asScala
+        .toList
+        .filter(_.select("a.annmt").size > 0)
+        .map(e => Rns.fromJsoupElement(e))
+    }
+  }
+
+  def getRnsContent(document: Document): String = {
+    document.select("#content").first().text()
   }
 }
 
@@ -36,28 +40,11 @@ case class Rns(
                 announcementTitle: String,
                 link: String,
                 source: String
-              ) {
-
-  def getRnsContent(): Future[String \/ String] = {
-    val svc = url(link)
-    val body = Http.default(svc OK as.String)
-
-    val handler = (r: Response) => {
-      if (r.getStatusCode >= 200 && r.getStatusCode < 300) {
-        \/-(parse(r.getResponseBody).select("#content").first().text())
-      } else {
-        -\/(s"Failed to get RNS content at $companyName $announcementTitle ${r.getUri.toString}. Status code ${r.getStatusCode}")
-      }
-    }
-    Http.default(svc > handler)
-
-  }
-}
-
+              )
 
 object Rns {
 
-  def fromJsoupElement(e: Element, baseUrl: String) = {
+  def fromJsoupElement(e: Element) = {
     val companyColumnText = e.select("td").get(3).text()
     val announcementText = e.select("td").get(4).text()
     val link = e.select("td").get(4).select("a").first().attr("href")
@@ -69,7 +56,7 @@ object Rns {
       companyName,
       ticker,
       announcementText,
-      s"$baseUrl$link",
+      link,
       source
     )
   }
@@ -82,7 +69,3 @@ object Rns {
       .getOrElse(Tuple2(text, empty[String]))
   }
 }
-
-
-
-
