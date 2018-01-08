@@ -7,16 +7,15 @@ import com.amazonaws.regions.Regions.EU_WEST_1
 
 import collection.JavaConverters._
 
-object EmailSender extends App {
-  implicit val region = EU_WEST_1
-  val destination = new Destination(List("roland.ormrod@googlemail.com").asJava)
-  val message = new Message(new Content("This is content"), new Body(new Content("This is body")))
-  val email = new SendEmailRequest("rnsreader@rnsreader.com", destination, message)
+object EmailSender {
+  def sendEmail(content: String) = {
+    implicit val region = EU_WEST_1
+    val destination = new Destination(List("roland.ormrod@googlemail.com").asJava)
+    val message = new Message(new Content("This is content"), new Body().withHtml(new Content(content)))
+    val email = new SendEmailRequest("rnsreader@binaryalchemy.co.uk", destination, message)
 
-  val sesClient = SESClient(new BasicAWSCredentials("FROM CONFIG", "FROM CONFIG"))
-  println("HI HI HI 3")
-  val future = sesClient.aws.sendEmailAsync(email)
-  println("HI HI HI 2")
-  val result = future.get()
-  println("HI HI HI")
+    val sesClient = SESClient(new BasicAWSCredentials("AKIAJTF6R6C4BSFZ5ZSA", "jU78GDWogOOBNrsB3s/skOIGQPP5oY/KWJrawNM8"))
+    val future = sesClient.aws.sendEmailAsync(email)
+    val result = future.get()
+  }
 }
