@@ -30,6 +30,7 @@ object Main{
     )
 
     output.unsafeRun
+    System.exit(0)
   }
 
   def printResultToConsole(r: Result) = {
