@@ -2,9 +2,10 @@ package uk.co.rnsreader.pages
 
 import dispatch.{Future, Http, as, url}
 import org.asynchttpclient.Response
+import org.http4s.client.Client
 import org.joda.time.DateTime
 import org.jsoup.Jsoup.parse
-import org.jsoup.nodes.Element
+import org.jsoup.nodes.{Document, Element}
 
 import scala.collection.JavaConverters._
 import scala.concurrent.Await
@@ -12,21 +13,40 @@ import scala.concurrent.duration.Duration
 import scalaz.{-\/, Maybe, \/, \/-}
 import scalaz.Maybe.{Just, empty}
 import scala.concurrent.ExecutionContext.Implicits.global
+import fs2.Task
+import org.http4s
+import org.http4s.client
+// import fs2.Task
+
+import fs2.Strategy
+// import fs2.Strategy
+
+import fs2.interop.cats._
+// import fs2.interop.cats._
+
+import cats._
+// import cats._
+
+import cats.implicits._
+// import cats.implicits._
+
+import org.http4s.Uri
 
 object TrustNetPage {
-  def getRnsList(baseUrl: String, d: DateTime): List[Rns] = {
+  def getRnsList(baseUrl: String, d: DateTime)(implicit client: Client): Task[List[Rns]] = {
+
+    def mapDocumentToRnsList(d: Document): List[Rns] = {
+      d.select("#announcementList tr")
+        .asScala
+        .toList
+        .filter(_.select("a.annmt").size > 0)
+        .map(e => Rns.fromJsoupElement(e, baseUrl))
+    }
+
     val date = d.toString("yyyMMdd")
-    val startUrl = s"$baseUrl/Investments/LatestAnnouncements.aspx?date=$date&pno=1&limit=-1"
-    val svc = url(startUrl)
-    val body = Http.default(svc OK as.String).map(parse)
-
-    val document = Await.result(body, Duration(10000, concurrent.duration.MILLISECONDS))
-
-    document.select("#announcementList tr")
-      .asScala
-      .toList
-      .filter(_.select("a.annmt").size > 0)
-      .map(e => Rns.fromJsoupElement(e, baseUrl))
+    client.expect[String](s"$baseUrl/Investments/LatestAnnouncements.aspx?date=$date&pno=1&limit=-1")
+      .map(parse)
+      .map(mapDocumentToRnsList)
   }
 }
 
@@ -38,19 +58,10 @@ case class Rns(
                 source: String
               ) {
 
-  def getRnsContent(): Future[String \/ String] = {
-    val svc = url(link)
-    val body = Http.default(svc OK as.String)
-
-    val handler = (r: Response) => {
-      if (r.getStatusCode >= 200 && r.getStatusCode < 300) {
-        \/-(parse(r.getResponseBody).select("#content").first().text())
-      } else {
-        -\/(s"Failed to get RNS content at $companyName $announcementTitle ${r.getUri.toString}. Status code ${r.getStatusCode}")
-      }
-    }
-    Http.default(svc > handler)
-
+  def getRnsContent()(implicit client: Client, strategy: Strategy): Task[(Rns, String)] = {
+    client.expect[String](link)
+      .map(parse)
+        .map(e => (this, e.select("#content").first().text()))
   }
 }
 

@@ -1,7 +1,11 @@
 package uk.co.rnsreader
 
+import cats.instances.future
+import fs2.Strategy
+import org.http4s.client.blaze.PooledHttp1Client
 import org.joda.time.DateTime
 import uk.co.rnsreader.email.EmailSender.sendEmail
+
 import scala.concurrent.Await
 import scala.concurrent.duration.Duration
 import scala.util.{Failure, Success}
@@ -9,31 +13,32 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scalaz.{-\/, \/-}
 
 object Main{
+  implicit val httpClient = PooledHttp1Client()
+  implicit val strategy = Strategy.fromExecutionContext(scala.concurrent.ExecutionContext.Implicits.global)
   val BASE_URL = "https://www2.trustnet.com"
   val date = new DateTime(2018, 1, 8, 0, 0)
 
   def main(args: Array[String]): Unit = {
-    val future = ProcessRns(BASE_URL, date)
+    val task = ProcessRns(BASE_URL, date)
 
-    future.onComplete {
-      case Success(results) => {
+    val output = task.attemptFold(
+      e => {
+        println(e.getMessage)
+        println("Try and do this search everyday to add ideas https://www.google.co.uk/search?q=new+technology+trends")
+      },
+      results => {
         results foreach printResultToConsole
         val emailOutput = results map createFriendlyOutput
         sendEmail(emailOutput.fold("")(_ + _ ))
         println("Try and do this search everyday to add ideas https://www.google.co.uk/search?q=new+technology+trends")
       }
-      case Failure(f) => {
-        println(f.getMessage)
-        println("Try and do this search everyday to add ideas https://www.google.co.uk/search?q=new+technology+trends")
-      }
-    }
+    )
 
-
-    Await.result(future, Duration(5, concurrent.duration.MINUTES))
+    output.unsafeRun
   }
 
   def printResultToConsole(r: Result) = {
-    r.matches match {
+    r.matches match {gi
       case -\/(error) => println(Console.RED + "There was an error " + error)
 
       case \/-(result) => {
