@@ -10,7 +10,7 @@ import scalaz.{-\/, \/-}
 
 object Main{
   val BASE_URL = "https://www2.trustnet.com"
-  val date = new DateTime(2018, 1, 8, 0, 0)
+  val date = DateTime.now()
 
   def main(args: Array[String]): Unit = {
     val future = ProcessRns(BASE_URL, date)
