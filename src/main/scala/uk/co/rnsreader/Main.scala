@@ -1,15 +1,10 @@
 package uk.co.rnsreader
 
-import cats.instances.future
 import fs2.Strategy
 import org.http4s.client.blaze.PooledHttp1Client
 import org.joda.time.DateTime
 import uk.co.rnsreader.email.EmailSender.sendEmail
 
-import scala.concurrent.Await
-import scala.concurrent.duration.Duration
-import scala.util.{Failure, Success}
-import scala.concurrent.ExecutionContext.Implicits.global
 import scalaz.{-\/, \/-}
 
 object Main{
@@ -38,7 +33,7 @@ object Main{
   }
 
   def printResultToConsole(r: Result) = {
-    r.matches match {gi
+    r.matches match {
       case -\/(error) => println(Console.RED + "There was an error " + error)
 
       case \/-(result) => {
