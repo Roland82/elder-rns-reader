@@ -11,7 +11,7 @@ object Main{
   implicit val httpClient = PooledHttp1Client()
   implicit val strategy = Strategy.fromExecutionContext(scala.concurrent.ExecutionContext.Implicits.global)
   val BASE_URL = "https://www2.trustnet.com"
-  val date = new DateTime(2018, 1, 8, 0, 0)
+  val date = DateTime.now()
 
   def main(args: Array[String]): Unit = {
     val task = ProcessRns(BASE_URL, date)
