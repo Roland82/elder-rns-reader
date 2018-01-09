@@ -62,8 +62,13 @@ object Main{
           case Some(matches) => {
             val groupedMatches = matches.map(_.toString().toLowerCase()).groupBy(e => e)
 
-            val matchList = groupedMatches.map(e => s"<p style='color: #2805B3'><b>${e._2.size} x ${e._1}</b></p>").fold("")(_ + _)
-            s"${r.rns.companyName} ${r.rns.ticker.map(e => "<p style='color: green'>(" + e + ")").getOrElse("")} ${r.rns.announcementTitle} -> ${r.rns.link}</p>$matchList"
+            val matchList = groupedMatches.map(e => s"<tr><td style='width: 50%;'>${e._2.size}x</td><td>${e._1}</td><tr>").fold("")(_ + _)
+
+            val tickerSymbolHtml = r.rns.ticker.map(r => s"(<a target='_blank' href='http://www.lse.co.uk/SharePrice.asp?SharePrice=$r'>$r</a>)").getOrElse("")
+            s"<table style=' margin-bottom: 10px; border: 1px black solid; width: 100%; text-align: left; font-family: helvetica; font-weight: lighter'>" +
+              s"<tr><th style='width: 50%;'>${r.rns.companyName} $tickerSymbolHtml</th><th><a href='${r.rns.link}'>${r.rns.announcementTitle}</a></th></t>" +
+              s"$matchList" +
+            "</table>"
           }
           case None => ""
         }
