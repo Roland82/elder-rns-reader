@@ -3,11 +3,13 @@ package uk.co.rnsreader
 import fs2.Strategy
 import org.http4s.client.blaze.PooledHttp1Client
 import org.joda.time.DateTime
+import uk.co.rnsreader.email.AwsEmailCredentials
 import uk.co.rnsreader.email.EmailSender.sendEmail
 
 import scalaz.{-\/, \/-}
 
 object Main{
+  val awsEmailCredentials = AwsEmailCredentials(System.getenv("AWS_ACCESS_KEY"), System.getenv("AWS_SECRET_KEY"))
   implicit val httpClient = PooledHttp1Client()
   implicit val strategy = Strategy.fromExecutionContext(scala.concurrent.ExecutionContext.Implicits.global)
   val BASE_URL = "https://www2.trustnet.com"
@@ -24,7 +26,7 @@ object Main{
       results => {
         results foreach printResultToConsole
         val emailOutput = results map createFriendlyOutput
-        sendEmail(emailOutput.fold("")(_ + _ ))
+        sendEmail(emailOutput.fold("")(_ + _ ), awsEmailCredentials)
         println("Try and do this search everyday to add ideas https://www.google.co.uk/search?q=new+technology+trends")
       }
     )
