@@ -1,0 +1,10 @@
+{
+  "request" : {
+    "urlPath" : "/businesswire/pageWithContentMatched.html",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName": "businesswirePageWithContentMatched.html"
+  }
+}

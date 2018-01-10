@@ -1,36 +1,17 @@
 package uk.co.rnsreader.pages
 
-import dispatch.{Future, Http, as, url}
-import org.asynchttpclient.Response
+import fs2.Task
 import org.http4s.client.Client
 import org.joda.time.DateTime
 import org.jsoup.Jsoup.parse
 import org.jsoup.nodes.{Document, Element}
 
 import scala.collection.JavaConverters._
-import scala.concurrent.Await
-import scala.concurrent.duration.Duration
-import scalaz.{-\/, Maybe, \/, \/-}
+import scalaz.Maybe
 import scalaz.Maybe.{Just, empty}
-import scala.concurrent.ExecutionContext.Implicits.global
-import fs2.Task
-import org.http4s
-import org.http4s.client
-// import fs2.Task
 
 import fs2.Strategy
-// import fs2.Strategy
 
-import fs2.interop.cats._
-// import fs2.interop.cats._
-
-import cats._
-// import cats._
-
-import cats.implicits._
-// import cats.implicits._
-
-import org.http4s.Uri
 
 object TrustNetPage {
   def getRnsList(baseUrl: String, d: DateTime)(implicit client: Client): Task[List[Rns]] = {

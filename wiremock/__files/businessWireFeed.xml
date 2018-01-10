@@ -1,0 +1,75 @@
+<rss version="2.0">
+  <channel>
+    <title>Business Wire Technology News</title>
+    <link>...</link>
+    <description>Technology News Distributed by Business Wire</description>
+    <language>en</language>
+    <copyright>Copyright 2018, Business Wire.</copyright>
+    <managingEditor>RSSfeeds@BusinessWire.com</managingEditor>
+    <webMaster>WebSupport@BusinessWire.com</webMaster>
+    <pubDate>Wed, 10 Jan 2018 13:41:05 UT</pubDate>
+    <lastBuildDate>Wed, 10 Jan 2018 13:41:05 UT</lastBuildDate>
+    <docs>http://www.businesswire.com</docs>
+    <image>...</image>
+    <item>
+      <title>
+        This is a title with the word blockchain in it
+      </title>
+      <pubDate>Wed, 10 Jan 2018 13:39:00 UT</pubDate>
+      <enclosure url="http://mms.businesswire.com/media/20180110005638/en/371054/21/ResearchAndMarkets_800px.jpg" type="image/jpeg" length="2048"/>
+      <description>
+        A description with nothing interesting
+      </description>
+      <link>
+        http://www.businesswire.com/news/home/20180110005638/en/Global-Perimeter-Intrusion-Detection-Systems-Market-2017-2021/?feedref=JjAwJuNHiystnCoBq_hl-Q-tiwWZwkcswR1UZtV7eGe24xL9TZOyQUMS3J72mJlQ7fxFuNFTHSunhvli30RlBNXya2izy9YOgHlBiZQk2LOzmn6JePCpHPCiYGaEx4DL1Rq8pNwkf3AarimpDzQGuQ==
+      </link>
+      <guid isPermaLink="false">20180110005638en</guid>
+    </item>
+    <item>
+      <title>
+        This is a title with nothing interesting
+      </title>
+      <pubDate>Wed, 10 Jan 2018 13:39:00 UT</pubDate>
+      <enclosure url="http://mms.businesswire.com/media/20180110005638/en/371054/21/ResearchAndMarkets_800px.jpg" type="image/jpeg" length="2048"/>
+      <description>
+        A description with the word blockchain in it
+      </description>
+      <link>
+        http://www.businesswire.com/news/home/20180110005638/en/Global-Perimeter-Intrusion-Detection-Systems-Market-2017-2021/?feedref=JjAwJuNHiystnCoBq_hl-Q-tiwWZwkcswR1UZtV7eGe24xL9TZOyQUMS3J72mJlQ7fxFuNFTHSunhvli30RlBNXya2izy9YOgHlBiZQk2LOzmn6JePCpHPCiYGaEx4DL1Rq8pNwkf3AarimpDzQGuQ==
+      </link>
+      <guid isPermaLink="false">20180110005638en</guid>
+    </item>
+
+
+
+    <item>
+      <title>
+        Announcement with match in content
+      </title>
+      <pubDate>Wed, 10 Jan 2018 13:39:00 UT</pubDate>
+      <enclosure url="http://mms.businesswire.com/media/20180110005638/en/371054/21/ResearchAndMarkets_800px.jpg" type="image/jpeg" length="2048"/>
+      <description>
+        Announcement with match in content
+      </description>
+      <link>
+        http://localhost:8080/businesswire/pageWithContentMatched.html
+      </link>
+      <guid isPermaLink="false">20180110005638en</guid>
+    </item>
+
+    <item>
+      <title>
+        blockchain should match but ignored because of the date
+      </title>
+      <pubDate>Mon, 8 Jan 2018 23:59:59 UT</pubDate>
+      <enclosure url="http://mms.businesswire.com/media/20180110005638/en/371054/21/ResearchAndMarkets_800px.jpg" type="image/jpeg" length="2048"/>
+      <description>
+        blockchain should match but ignored because of the date
+      </description>
+      <link>
+        http://localhost:8080/businesswire/pageWithContentMatched.html
+      </link>
+      <guid isPermaLink="false">20180110005638en</guid>
+    </item>
+  </channel>
+</rss>

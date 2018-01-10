@@ -1,0 +1,15 @@
+{
+  "request" : {
+    "urlPath" : "/rss/home/",
+    "method" : "GET",
+    "queryParameters" : {
+      "rss" : {
+        "equalTo" : "G1QFDERJXkJeEFpQWg=="
+      }
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName": "businessWireFeed.xml"
+  }
+}
