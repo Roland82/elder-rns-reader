@@ -11,6 +11,7 @@ libraryDependencies += "net.databinder.dispatch" %% "dispatch-core" % "0.13.2"
 libraryDependencies += "org.jsoup" % "jsoup" % "1.8.3"
 libraryDependencies += "org.scalaz" %% "scalaz-core" % scalazVersion
 libraryDependencies += "org.scalaz" %% "scalaz-concurrent" % scalazVersion
+libraryDependencies += "co.fs2" %% "fs2-scalaz" % "0.3.0"
 libraryDependencies += "joda-time" % "joda-time" % "2.9.9"
 libraryDependencies += "jp.co.bizreach" %% "aws-ses-scala" % "0.0.2"
 libraryDependencies += "com.typesafe.akka" %% "akka-http-core" % "10.0.11"
