@@ -16,7 +16,7 @@ object BusinessWireMain {
   implicit val strategy = Strategy.fromExecutionContext(scala.concurrent.ExecutionContext.Implicits.global)
   val BASE_URL = "https://feed.businesswire.com"
   val date = DateTime.now()
-  val cutoffDate = date.minusMinutes(10)
+  val cutoffDate = date.minusMinutes(1)
 
   def main(args: Array[String]): Unit = {
     val task = ProcessBusinessWire(BASE_URL, cutoffDate)
@@ -29,8 +29,9 @@ object BusinessWireMain {
       results => {
         results foreach printResultToConsole
         val emailOutput = results map createFriendlyOutput
-        sendEmail(emailOutput.fold("")(_ + _), awsEmailCredentials)
-        println("Try and do this search everyday to add ideas https://www.google.co.uk/search?q=new+technology+trends")
+        if (results.nonEmpty) {
+          sendEmail(emailOutput.fold("")(_ + _), awsEmailCredentials)
+        }
       }
     )
 
