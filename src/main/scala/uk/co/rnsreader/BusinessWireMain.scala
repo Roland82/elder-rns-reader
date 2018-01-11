@@ -16,7 +16,7 @@ object BusinessWireMain {
   implicit val strategy = Strategy.fromExecutionContext(scala.concurrent.ExecutionContext.Implicits.global)
   val BASE_URL = "https://feed.businesswire.com"
   val date = DateTime.now()
-  val cutoffDate = date.minusMinutes(1)
+  val cutoffDate = date.minusMinutes(5)
 
   def main(args: Array[String]): Unit = {
     val task = ProcessBusinessWire(BASE_URL, cutoffDate)
