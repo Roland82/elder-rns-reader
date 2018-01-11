@@ -9,30 +9,32 @@ object ContentMatcher {
   val AHEAD_OF_EXPECTATIONS = "(?i)ahead of( \\w+ | )expectation(s|)|ahead of thee( \\w+ | )expectation(s|)".r
   val BELOW_EXPECTATIONS = "(?i)below( \\w+ | )expectation(s|)".r
 
-  def matchStringInContent(stringsToMatch: List[Regex])(d: String) : Option[List[Regex.Match]] = {
+  def matchStringInContent(stringsToMatch: List[Regex])(d: String) : List[Regex.Match] = {
     val allMatches = stringsToMatch.map {
       e => {
         e.findAllMatchIn(d)
       }
     }
 
-    val matches = allMatches.flatMap(_.toList)
-    if (matches.nonEmpty) Some(matches) else None
+    allMatches.flatMap(_.toList)
   }
 
-  def findInterestingRns : String => Option[List[Regex.Match]] =
+  def findInterestingRns(s: String): List[Regex.Match] =
     matchStringInContent(
       List(
         SINGLE_WORDS_MATCHER,
         AHEAD_OF_EXPECTATIONS,
         BELOW_EXPECTATIONS
       )
-    )
+    )(s)
 
-  def findBubbleRns : String => Option[List[Regex.Match]] =
-    matchStringInContent(
+  def findBubbleRns(s: String) : Option[List[Regex.Match]] = {
+    val result = matchStringInContent(
       List(
         BUBBLE_WORDS_MATCHER
       )
-    )
+    )(s)
+    if (result.nonEmpty) Some(result) else None
+  }
+
 }

@@ -15,7 +15,7 @@ object Main{
   val cutoffDateTime = DateTime.now().minusMinutes(100)
 
   def main(args: Array[String]): Unit = {
-    val task = ProcessRns(BASE_URL)(cutoffDateTime)
+    val task = ProcessRns.process(BASE_URL)(cutoffDateTime)
 
     val output = task.attemptFold(
       e => {

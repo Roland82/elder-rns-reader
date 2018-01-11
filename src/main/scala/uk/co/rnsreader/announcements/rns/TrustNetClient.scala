@@ -13,6 +13,7 @@ import scalaz.\/
 object TrustNetClient {
 
   def getRnsContent(baseUrl: String)(path: String)(implicit client: Client, strategy: Strategy) : Task[Throwable \/ String] = {
+    println("Getting rns content for " + baseUrl + path)
     client.expect[String](baseUrl + path)
       .attemptFold(\/.left, \/.right)
       .map(e => e.map(parse))
