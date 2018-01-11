@@ -1,6 +1,7 @@
 package uk.co.rnsreader.announcements.businesswire
 
 import fs2.{Strategy, Task}
+import org.http4s.{Method, Request, Uri}
 import org.http4s.client.Client
 import org.joda.time.DateTime
 import org.jsoup.nodes.Document
@@ -12,15 +13,11 @@ import scalaz.\/
 
 object ProcessBusinessWire extends AnnouncementProcessor {
 
-
-
-
-
   def process(baseUrl: String)(date: DateTime)(implicit client: Client, s: Strategy): Task[Vector[Throwable \/ AnnouncementResult]] = {
     for {
-      response <- getFeed(baseUrl)
-      items <- parseXmlToItems(response).map(e => e.filter(item => item.date) Task.now(e.filter(_.date.isAfter(cutoffDate))))
-      a <- Task.parallelTraverse()(searchAnnouncementContent)
+      items <- getFeed(baseUrl).flatMap(parseXmlToItems)
+      x     <- Task.now(items.filter(_.date.isAfter(date)))
+      a     <- Task.parallelTraverse(x)(searchAnnouncementContent)
     } yield a
   }
 
@@ -30,16 +27,14 @@ object ProcessBusinessWire extends AnnouncementProcessor {
 
   def searchAnnouncementContent(item: BusinessWireRRSItem)(implicit client: Client) : Task[Throwable \/ AnnouncementResult] = {
     def getAnnouncementText(d: Document) = d.select("article.bw-release-main").text()
-    val matchesInFeedItem = findBubbleRns(item.title)
-      .orElse(findBubbleRns(item.description))
-
-
+    val matchesInFeedItem = findBubbleRns(item.title).orElse(findBubbleRns(item.description))
 
     matchesInFeedItem match {
       case Some(e) => Task.now(\/.right(AnnouncementResult(item, e)))
       case None =>
         client.expect[String](item.link)
           .attemptFold(\/.left, \/.right)
+
           .map(_.map(e => findBubbleRns(e).getOrElse(List.empty)))
           .map(e => e.map(f =>  AnnouncementResult(item, f)))
     }

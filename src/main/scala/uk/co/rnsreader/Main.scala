@@ -3,19 +3,27 @@ package uk.co.rnsreader
 import fs2.Strategy
 import org.http4s.client.blaze.PooledHttp1Client
 import org.joda.time.DateTime
+import uk.co.rnsreader.announcements.businesswire.ProcessBusinessWire
 import uk.co.rnsreader.announcements.rns.ProcessRns
 import uk.co.rnsreader.email.AwsEmailCredentials
 import uk.co.rnsreader.outputters.ConsoleOutputter._
 
 object Main{
+  val newsSource = System.getenv("NEWS_SOURCE")
   val awsEmailCredentials = AwsEmailCredentials(System.getenv("AWS_ACCESS_KEY"), System.getenv("AWS_SECRET_KEY"))
   implicit val httpClient = PooledHttp1Client()
   implicit val strategy = Strategy.fromExecutionContext(scala.concurrent.ExecutionContext.Implicits.global)
-  val BASE_URL = "https://www2.trustnet.com"
-  val cutoffDateTime = DateTime.now().minusMinutes(100)
+  val cutoffDateTime = DateTime.now().minusMinutes(1200)
 
   def main(args: Array[String]): Unit = {
-    val task = ProcessRns.process(BASE_URL)(cutoffDateTime)
+    val task = newsSource match {
+      case "RNS" => ProcessRns.process("https://www2.trustnet.com")(cutoffDateTime)
+      case "Businesswire" => ProcessBusinessWire.process("https://feed.businesswire.com")(cutoffDateTime)
+      case _ => {
+        println("Unknown news source " + newsSource + ". Exiting")
+        throw new Exception()
+      }
+    }
 
     val output = task.attemptFold(
       e => {

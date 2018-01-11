@@ -8,5 +8,5 @@ import scalaz.\/
 
 
 trait AnnouncementProcessor {
-  abstract def process(baseUrl: String)(date: DateTime)(implicit client: Client, strategy: Strategy): Task[Vector[Throwable \/ AnnouncementResult]]
+  def process(baseUrl: String)(date: DateTime)(implicit client: Client, strategy: Strategy): Task[Vector[Throwable \/ AnnouncementResult]]
 }

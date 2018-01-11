@@ -13,11 +13,15 @@ object ConsoleOutputter {
     }
 
     a match {
-      case -\/(error) => println(s"Error getting match for $announcmentDescription")
+      case -\/(error) => println(s"Error getting match due to ${error.getMessage}")
       case \/-(result) => {
-        val groupedMatches = result.matches.map(_.toString().toLowerCase()).groupBy(e => e)
-        println(Console.WHITE + announcmentDescription)
-        groupedMatches.foreach(e => println(Console.YELLOW + s"${e._2.size} x ${e._1}"))
+        if (result.matches.nonEmpty) {
+          val groupedMatches = result.matches.map(_.toString().toLowerCase()).groupBy(e => e)
+          println(Console.WHITE + announcmentDescription(result))
+          groupedMatches.foreach(e => println(Console.YELLOW + s"${e._2.size} x ${e._1}"))
+        } else {
+          println(s"No Match for " + announcmentDescription(result))
+        }
       }
     }
   }
