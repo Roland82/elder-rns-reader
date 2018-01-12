@@ -23,7 +23,7 @@ object Main{
 
   implicit val httpClient = PooledHttp1Client()
   implicit val strategy = Strategy.fromExecutionContext(scala.concurrent.ExecutionContext.Implicits.global)
-  val cutoffDateTime = DateTime.now().minusHours(9)
+  val cutoffDateTime = DateTime.now().minusMinutes(10)
 
   def main(args: Array[String]): Unit = {
     val task = newsSource match {
