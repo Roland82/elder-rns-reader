@@ -7,8 +7,8 @@ object AnnouncementFilterer {
   type AnnouncementFilter = RnsItem => Boolean
 
   def filterFromConfig(c: Config)(rns: RnsItem): Boolean = {
-    (c.getStringList("rnsProcessor.ignore.titles.equalTo").asScala.toStream.map(filtersWithTitleEqualTo) ++
-      c.getStringList("rnsProcessor.ignore.titles.startingWith").asScala.toStream.map(filtersWithTitleStartingWith))
+    (c.getStringList("rnsProcessor.filter.title.equalTo").asScala.toStream.map(filtersWithTitleEqualTo) ++
+      c.getStringList("rnsProcessor.filter.title.startingWith").asScala.toStream.map(filtersWithTitleStartingWith))
     .forall(e => e(rns))
   }
 

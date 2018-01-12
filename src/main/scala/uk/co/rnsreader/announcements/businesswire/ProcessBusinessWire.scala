@@ -7,14 +7,14 @@ import org.joda.time.DateTime
 import org.jsoup.nodes.Document
 import uk.co.rnsreader.ContentMatcher.findBubbleRns
 import uk.co.rnsreader.announcements.AnnouncementFilterer.AnnouncementFilter
-import uk.co.rnsreader.announcements.{AnnouncementProcessor, AnnouncementResult, BusinessWireRRSItem}
+import uk.co.rnsreader.announcements.{AnnouncementResult, BusinessWireRRSItem}
 
 import scala.xml.{NodeSeq, XML}
 import scalaz.{-\/, \/}
 
-object ProcessBusinessWire extends AnnouncementProcessor {
+object ProcessBusinessWire {
 
-  def process(baseUrl: String)(filter: AnnouncementFilter)(cutoffDate: DateTime)(implicit client: Client, s: Strategy): Task[Vector[Throwable \/ AnnouncementResult]] = {
+  def process(baseUrl: BusinessWireBaseUrl)(filter: AnnouncementFilter)(cutoffDate: DateTime)(implicit client: Client, s: Strategy): Task[Vector[Throwable \/ AnnouncementResult]] = {
     for {
       items <- getFeed(baseUrl).flatMap(parseXmlToItems)
       x     <- Task.now(items.filter(_.date.isAfter(cutoffDate)))
@@ -22,7 +22,7 @@ object ProcessBusinessWire extends AnnouncementProcessor {
     } yield a
   }
 
-  def getFeed(baseUrl: String)(implicit client: Client): Task[NodeSeq] =
+  def getFeed(baseUrl: BusinessWireBaseUrl)(implicit client: Client): Task[NodeSeq] =
     client.expect[String](s"$baseUrl/rss/home/?rss=G1QFDERJXkJeEFpQWg==").map(e => XML.loadString(e) \\ "channel" \\ "item")
 
 

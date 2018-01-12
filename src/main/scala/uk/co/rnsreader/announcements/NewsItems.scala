@@ -20,7 +20,7 @@ case class RnsItem (
 
 object RnsItem {
 
-  def fromJsoupElement(e: Element, baseUrl: String) = {
+  def fromJsoupElement(e: Element) = {
     val companyColumnText = e.select("td").get(3).text()
     val announcementText = e.select("td").get(4).text()
     val path = e.select("td").get(4).select("a").first().attr("href")
