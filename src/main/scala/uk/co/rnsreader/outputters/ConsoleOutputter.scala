@@ -20,7 +20,7 @@ object ConsoleOutputter {
           println(Console.WHITE + announcmentDescription(result))
           groupedMatches.foreach(e => println(Console.YELLOW + s"${e._2.size} x ${e._1}"))
         } else {
-          println(s"No Match for " + announcmentDescription(result))
+          //println(s"No Match for " + announcmentDescription(result))
         }
       }
     }

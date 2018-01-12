@@ -1,7 +1,6 @@
 package uk.co.rnsreader.announcements.businesswire
 
 import fs2.{Strategy, Task}
-import org.http4s.{Method, Request, Uri}
 import org.http4s.client.Client
 import org.joda.time.DateTime
 import org.jsoup.nodes.Document
