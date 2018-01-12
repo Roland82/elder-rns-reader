@@ -16,6 +16,4 @@ libraryDependencies +="org.http4s" %% "http4s-dsl" % http4sVersion
 libraryDependencies +="org.http4s" %% "http4s-blaze-server" % http4sVersion
 libraryDependencies +="org.http4s" %% "http4s-blaze-client" % http4sVersion
 
-mainClass in oneJar := Some("uk.co.rnsreader.Main")
-
 fork in run := true
