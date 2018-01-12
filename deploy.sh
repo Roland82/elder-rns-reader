@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-/usr/local/bin/sbt one-jar
+/usr/local/bin/sbt assembly
 
-cp target/scala-2.11/hello-scala_2.11-1.0.jar reader.jar
+cp target/scala-2.11/stock-rns-reader-assembly-1.0.jar stock-rns-reader.jar
