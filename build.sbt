@@ -4,7 +4,6 @@ version := "1.0"
 val http4sVersion = "0.17.6"
 val scalazVersion = "7.2.18"
 scalaVersion := "2.11.7"
-com.github.retronym.SbtOneJar.oneJarSettings
 
 libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.4" % "test"
 libraryDependencies += "org.jsoup" % "jsoup" % "1.8.3"
