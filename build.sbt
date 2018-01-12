@@ -1,9 +1,17 @@
 name := """stock-rns-reader"""
 
 version := "1.0"
+
+scalaVersion := "2.11.7"
+
+resolvers ++= Seq(
+  Resolver.sonatypeRepo("releases"),
+  Resolver.sonatypeRepo("snapshots")
+)
+
 val http4sVersion = "0.17.6"
 val scalazVersion = "7.2.18"
-scalaVersion := "2.11.7"
+val shapelessVersion = "2.3.3"
 
 libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.4" % "test"
 libraryDependencies += "org.jsoup" % "jsoup" % "1.8.3"
@@ -15,5 +23,6 @@ libraryDependencies += "com.typesafe.akka" %% "akka-http-core" % "10.0.11"
 libraryDependencies +="org.http4s" %% "http4s-dsl" % http4sVersion
 libraryDependencies +="org.http4s" %% "http4s-blaze-server" % http4sVersion
 libraryDependencies +="org.http4s" %% "http4s-blaze-client" % http4sVersion
+libraryDependencies +="com.chuusai" %% "shapeless" % shapelessVersion
 
 fork in run := true

@@ -7,10 +7,17 @@ import uk.co.rnsreader.announcements.businesswire.ProcessBusinessWire
 import uk.co.rnsreader.announcements.rns.ProcessRns
 import uk.co.rnsreader.outputters.{AwsEmailCredentials, EmailSender}
 import uk.co.rnsreader.outputters.ConsoleOutputter._
+import com.typesafe.config.ConfigFactory
+import uk.co.rnsreader.announcements.AnnouncementFilterer._
 
 import scalaz.Scalaz._
 
 object Main{
+  val configuration = ConfigFactory.load()
+  val announcementFilter = filterFromConfig(configuration)(_)
+
+
+
   val newsSource = System.getenv("NEWS_SOURCE")
   val sendEmail = Option(System.getenv("ENABLE_SEND_EMAIL"))
   val awsAccessKey = Option(System.getenv("AWS_ACCESS_KEY"))
@@ -27,11 +34,11 @@ object Main{
 
   def main(args: Array[String]): Unit = {
     val task = newsSource match {
-      case "RNS" => ProcessRns.process("https://www2.trustnet.com")(cutoffDateTime)
-      case "Businesswire" => ProcessBusinessWire.process("https://feed.businesswire.com")(cutoffDateTime)
+      case "RNS" => ProcessRns.process("https://www2.trustnet.com")(announcementFilter)(cutoffDateTime)
+      case "Businesswire" => ProcessBusinessWire.process("https://feed.businesswire.com")((e) => true)(cutoffDateTime)
       case _ => {
         println("Unknown news source " + newsSource + ". Exiting")
-        throw new Exception()
+        throw new Exception("Unknown news source " + newsSource + ". Exiting")
       }
     }
 
