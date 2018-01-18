@@ -4,7 +4,7 @@ import scala.util.matching.Regex
 
 
 object ContentMatcher {
-  val SINGLE_WORDS_MATCHER = "(?i)(blockchain|bitcoin|litecoin|bitcoin cash|big data|hadoop|machine learning|artificial intelligence| VR |Virtual Reality|Augmented reality|Cybersecurity|CRISPR)".r
+  val SINGLE_WORDS_MATCHER = "(?i)(blockchain|bitcoin|litecoin|bitcoin cash|big data|hadoop|machine learning|artificial intelligence| VR |Virtual Reality|Augmented reality|Cybersecurity)".r
   val BUBBLE_WORDS_MATCHER = "(?i)(blockchain|bitcoin|litecoin|bitcoin cash|ripple|cryptocurrency| ico |initial coin offering)".r
   val AHEAD_OF_EXPECTATIONS = "(?i)ahead of( \\w+ | )expectation(s|)|ahead of thee( \\w+ | )expectation(s|)".r
   val BELOW_EXPECTATIONS = "(?i)below( \\w+ | )expectation(s|)".r

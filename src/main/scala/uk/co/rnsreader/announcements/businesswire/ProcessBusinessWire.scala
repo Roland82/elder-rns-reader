@@ -2,6 +2,7 @@ package uk.co.rnsreader.announcements.businesswire
 
 import fs2.{Strategy, Task}
 import org.http4s.client.Client
+import org.http4s.util.CaseInsensitiveString
 import org.joda.time.DateTime
 import org.jsoup.nodes.Document
 import uk.co.rnsreader.ContentMatcher.findBubbleRns
@@ -30,13 +31,36 @@ object ProcessBusinessWire extends AnnouncementProcessor {
 
     matchesInFeedItem match {
       case Some(e) => Task.now(\/.right(AnnouncementResult(item, e)))
-      case None => Task.now(\/.right(AnnouncementResult(item, List.empty)))
-        // TODO: Link following fix
-//        client.expect[String](item.link)
-//          .attemptFold(\/.left, \/.right)
-//
-//          .map(_.map(e => findBubbleRns(e).getOrElse(List.empty)))
-//          .map(e => e.map(f =>  AnnouncementResult(item, f)))
+      case None =>
+        client.get[Throwable \/ AnnouncementResult](item.link)
+          {
+            response => {
+              response.headers.get(CaseInsensitiveString("Location")) match {
+                case Some(location) => {
+                  client.expect[String](location.value).attemptFold(
+                    \/.left,
+                    \/.right
+                  )
+                    .map(_.map(e => findBubbleRns(e).getOrElse(List.empty)))
+                    .map(_.map(f =>  AnnouncementResult(item, f)))
+
+                }
+                case None => {
+
+                    response.as[String].attemptFold(
+                      \/.left,
+                      \/.right
+                    )
+                      .map(_.map(e => findBubbleRns(e).getOrElse(List.empty)))
+                      .map(_.map(f =>  AnnouncementResult(item, f)))
+                }
+              }
+
+            }
+          }
+
+
+
     }
   }
 

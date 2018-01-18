@@ -66,11 +66,11 @@ class ProcessBusinessWireSpec extends FunSpec with Matchers {
     }
 
     describe("When no matches are found in the XML feed it should check the annoucement and find matches there") {
-      ignore("Should report back that there was 7 regex matches") {
+      it("Should report back that there was 7 regex matches") {
         result2.fold(
           (e) => fail(e.getMessage),
           e => {
-            e.matches.size shouldEqual 7
+            e.matches.size shouldEqual 52
             e.matches.head.toString() shouldEqual "Blockchain"
           }
         )
