@@ -22,11 +22,12 @@ object TrustNetClient {
 
   def getTrustNetPage(baseUrl: String)(d: DateTime)(implicit client: Client, strategy: Strategy) : Task[Throwable \/ List[RnsItem]] = {
     def mapDocumentToRnsList(d: Throwable \/ Document):  Throwable \/ List[RnsItem] = {
-      d.map(_.select("#announcementList tr")
+      val result = d.map(_.select("#announcementList tr")
         .asScala
         .toList
         .filter(_.select("a.annmt").size > 0)
         .map(e => RnsItem.fromJsoupElement(e, baseUrl)))
+      result
     }
 
     val date = d.toString("yyyMMdd")

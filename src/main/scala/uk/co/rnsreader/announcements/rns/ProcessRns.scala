@@ -14,12 +14,19 @@ object ProcessRns extends AnnouncementProcessor {
   def process(baseUrl: String)(date: DateTime)(implicit client: Client, strategy: Strategy): Task[Vector[Throwable \/ AnnouncementResult]] = {
     val rnsTask = getTrustNetPage(baseUrl)(date).map(e => e.map(_.filter(rnsFilter)))
 
-    def callEndpoints(rnsListCallResult: Throwable \/ List[RnsItem]): Task[Vector[Throwable \/ AnnouncementResult]] = rnsListCallResult match {
-      case -\/(error) => Task.fail(error)
-      case \/-(rnsItems) => Task.parallelTraverse(rnsItems) { rns =>
-        getRnsContent(baseUrl)(rns.path).map {
-          case \/-(result) => \/-(AnnouncementResult(rns, findInterestingRns(result)))
-          case -\/(e) => -\/(e)
+    def callEndpoints(rnsListCallResult: Throwable \/ List[RnsItem]): Task[Vector[Throwable \/ AnnouncementResult]] = {
+      rnsListCallResult match {
+        case -\/(error) => {
+          println("calling endpoints failed")
+          Task.fail(error)
+        }
+
+        case \/-(rnsItems) => Task.parallelTraverse(rnsItems) { rns => {
+          getRnsContent(baseUrl)(rns.path).map {
+            case \/-(result) => \/-(AnnouncementResult(rns, findInterestingRns(result)))
+            case -\/(e) => -\/(e)
+          }
+        }
         }
       }
     }

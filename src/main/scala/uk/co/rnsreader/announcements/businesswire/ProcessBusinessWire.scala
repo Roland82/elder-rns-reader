@@ -30,12 +30,13 @@ object ProcessBusinessWire extends AnnouncementProcessor {
 
     matchesInFeedItem match {
       case Some(e) => Task.now(\/.right(AnnouncementResult(item, e)))
-      case None =>
-        client.expect[String](item.link)
-          .attemptFold(\/.left, \/.right)
-
-          .map(_.map(e => findBubbleRns(e).getOrElse(List.empty)))
-          .map(e => e.map(f =>  AnnouncementResult(item, f)))
+      case None => Task.now(\/.right(AnnouncementResult(item, List.empty)))
+        // TODO: Link following fix
+//        client.expect[String](item.link)
+//          .attemptFold(\/.left, \/.right)
+//
+//          .map(_.map(e => findBubbleRns(e).getOrElse(List.empty)))
+//          .map(e => e.map(f =>  AnnouncementResult(item, f)))
     }
   }
 
